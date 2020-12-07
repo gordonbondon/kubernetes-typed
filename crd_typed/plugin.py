@@ -1,4 +1,3 @@
-import warnings
 from typing import Any, Callable, Dict, List, Optional, Set, Union, cast
 
 import yaml
@@ -12,14 +11,10 @@ class CRDPlugin(Plugin):
     """Provides support for the CRD specs as TypedDict."""
 
     CustomResource = "crd_typed.CustomResource"
-    CustomResourceSpec = "crd_typed.CustomResourceSpec"
 
     def get_type_analyze_hook(self, fullname: str) -> Optional[Callable]:
         if fullname == self.CustomResource:
             return custom_resource_callback
-
-        if fullname == self.CustomResourceSpec:
-            return custom_resource_spec_callback
 
         return None
 
@@ -32,29 +27,24 @@ def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
     if not ctx.type.args:
         return ctx.type
 
-    args = list(map(resolve_arg, ctx.type.args))
-
-    definition_path = args[0]
+    definition_path, *sub_schema = list(map(resolve_arg, ctx.type.args))
 
     openapi_schema = load_schema(definition_path)
+
+    print(openapi_schema)
+
+    if sub_schema:
+        openapi_schema = get_sub_schema(openapi_schema, sub_schema)
+
+    if openapi_schema is None:
+        ctx.api.fail(
+            "CustomResourceDefinition at {0} does not have type object subschema defined for {1}".format(
+                definition_path, sub_schema
+            ),
+            ctx.context,
+        )
 
     make_type = TypeMaker("", openapi_schema, api_version=APIv7)
-    _type = make_type(ctx)
-
-
-def custom_resource_spec_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
-    if not ctx.type.args:
-        return ctx.type
-
-    args = list(map(resolve_arg, ctx.type.args))
-
-    definition_path = args[0]
-
-    openapi_schema = load_schema(definition_path)
-
-    spec_schema = openapi_schema["properties"]["spec"]
-
-    make_type = TypeMaker("", spec_schema, api_version=APIv7)
     _type = make_type(ctx)
 
     return _type
@@ -74,10 +64,18 @@ def load_schema(path: str) -> dict:
     with open(path, "r") as stream:
         schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
 
-    # provide sane name for TypeDict
-    schema["title"] = "OpenAPIV3Schema"
-
     return schema
+
+
+def get_sub_schema(schema: dict, keys: List[str]) -> dict:
+    _schema = schema
+    for key in keys:
+        try:
+            _schema = _schema["properties"][key]
+        except KeyError:
+            return None
+
+    return _schema
 
 
 def plugin(_version: str):

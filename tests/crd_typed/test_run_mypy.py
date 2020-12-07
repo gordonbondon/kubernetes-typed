@@ -18,7 +18,10 @@ cases: List[Tuple[str, Expect]] = [
         "reads_crd.py",
         Expect(
             normal="""
+                note: Revealed type is 'TypedDict('Jsonschema', {'spec'?: TypedDict({'cronSpec'?: builtins.str, 'replicas'?: Union[builtins.int, builtins.float]})})'
                 note: Revealed type is 'TypedDict('Jsonschema', {'cronSpec'?: builtins.str, 'replicas'?: Union[builtins.int, builtins.float]})'
+                error: Argument 2 has incompatible type "int"; expected "str"
+                error: Argument 2 has incompatible type "str"; expected "float"
             """,
             error="",
             exit_status=1,

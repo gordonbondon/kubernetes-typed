@@ -1,9 +1,9 @@
-from typing import Any, Callable, Dict, List, Optional, Set, Union, cast
+from typing import Callable, List, Optional, Union
 
 import yaml
-from jsonschema_typed.plugin import APIv7, TypeMaker
-from mypy.nodes import MDEF, CallExpr, SymbolTableNode, Var
-from mypy.plugin import AnalyzeTypeContext, ClassDefContext, Plugin
+
+from jsonschema_typed.plugin import APIv4, TypeMaker
+from mypy.plugin import AnalyzeTypeContext, Plugin
 from mypy.types import RawExpressionType, TypedDictType, UnboundType
 
 
@@ -31,8 +31,6 @@ def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
 
     openapi_schema = load_schema(definition_path)
 
-    print(openapi_schema)
-
     if sub_schema:
         openapi_schema = get_sub_schema(openapi_schema, sub_schema)
 
@@ -44,7 +42,7 @@ def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
             ctx.context,
         )
 
-    make_type = TypeMaker("", openapi_schema, api_version=APIv7)
+    make_type = TypeMaker("", openapi_schema, api_version=APIv4)
     _type = make_type(ctx)
 
     return _type

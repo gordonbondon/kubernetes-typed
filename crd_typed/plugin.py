@@ -71,7 +71,10 @@ def get_sub_schema(schema: dict, keys: List[str]) -> dict:
     _schema = schema
     for key in keys:
         try:
-            _schema = _schema["properties"][key]
+            if _schema["type"] == "object":
+                _schema = _schema["properties"][key]
+            elif _schema["type"] == "array":
+                _schema = _schema[key]
         except KeyError:
             return None
 

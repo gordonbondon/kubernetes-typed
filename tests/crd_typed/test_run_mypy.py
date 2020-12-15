@@ -18,12 +18,34 @@ cases: List[Tuple[str, Expect]] = [
         "reads_crd.py",
         Expect(
             normal="""
-                note: Revealed type is 'TypedDict('Jsonschema', {'spec'?: TypedDict({'cronSpec'?: builtins.str, 'replicas'?: Union[builtins.int, builtins.float]})})'
-                note: Revealed type is 'TypedDict('Jsonschema', {'cronSpec'?: builtins.str, 'replicas'?: Union[builtins.int, builtins.float]})'
+                note: Revealed type is 'TypedDict('Jsonschema', {'spec'?: TypedDict({'cronSpec'?: builtins.str, 'replicas'?: builtins.int})})'
                 error: Argument 2 has incompatible type "int"; expected "str"
-                error: Argument 2 has incompatible type "str"; expected "float"
+                error: Argument 2 has incompatible type "str"; expected "int"
             """,
             error="",
+            exit_status=1,
+        ),
+    ),
+    (
+        "nested_crd.py",
+        Expect(
+            normal="""
+                note: Revealed type is 'TypedDict('Jsonschema', {'stringProperty'?: builtins.str})'
+                note: Revealed type is 'TypedDict('Jsonschema', {'integerProperty'?: builtins.int})'
+                error: Argument 2 has incompatible type "int"; expected "str"
+                error: Argument 2 has incompatible type "str"; expected "int"
+            """,
+            error="",
+            exit_status=1,
+        ),
+    ),
+    (
+        "wrong_spec.py",
+        Expect(
+            normal="",
+            error="""
+                error: CustomResourceDefinition at tests/crd_typed/cases/nested_crd.yaml does not have type object subschema defined for ['spec', 'wrongObject']
+            """,
             exit_status=1,
         ),
     ),
@@ -32,7 +54,9 @@ cases: List[Tuple[str, Expect]] = [
 
 @pytest.mark.parametrize("case_file, expected", cases)
 def test_cases(case_file: str, expected: Expect):
-    normal_report, error_report, exit_status = api.run(["--show-traceback", os.path.join(case_directory, case_file)])
+    normal_report, error_report, exit_status = api.run(
+        ["--show-traceback", os.path.join(case_directory, case_file)]
+    )
 
     if expected["error"] == "":
         assert error_report == ""

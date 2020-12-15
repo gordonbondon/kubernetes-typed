@@ -1,7 +1,6 @@
 from typing import Callable, List, Optional, Union
 
 import yaml
-
 from jsonschema_typed.plugin import APIv4, TypeMaker
 from mypy.plugin import AnalyzeTypeContext, Plugin
 from mypy.types import RawExpressionType, TypedDictType, UnboundType
@@ -60,7 +59,9 @@ def resolve_arg(value: Union[RawExpressionType, UnboundType]):
 
 def load_schema(path: str) -> dict:
     with open(path, "r") as stream:
-        schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
+        schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"][
+            "openAPIV3Schema"
+        ]
 
     return schema
 

@@ -35,7 +35,8 @@ def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
 
     if openapi_schema is None:
         ctx.api.fail(
-            "CustomResourceDefinition at {0} does not have type object subschema defined for {1}".format(
+            """CustomResourceDefinition at {0} does not have type object subschema
+            defined for {1}""".format(
                 definition_path, sub_schema
             ),
             ctx.context,

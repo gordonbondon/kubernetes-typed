@@ -3,7 +3,7 @@ from typing import Callable, List, Optional, Union
 import yaml
 from jsonschema_typed.plugin import APIv4, TypeMaker
 from mypy.plugin import AnalyzeTypeContext, Plugin
-from mypy.types import RawExpressionType, TypedDictType, UnboundType
+from mypy.types import AnyType, RawExpressionType, TypedDictType, TypeOfAny, UnboundType
 
 
 class CRDPlugin(Plugin):
@@ -35,12 +35,12 @@ def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
 
     if openapi_schema is None:
         ctx.api.fail(
-            """CustomResourceDefinition at {0} does not have type object subschema
-            defined for {1}""".format(
-                definition_path, sub_schema
-            ),
+            "CustomResourceDefinition at {0} does not have type object subschema "
+            "defined for {1}".format(definition_path, sub_schema),
             ctx.context,
         )
+
+        return AnyType(TypeOfAny.unannotated)
 
     make_type = TypeMaker("", openapi_schema, api_version=APIv4)
     _type = make_type(ctx)

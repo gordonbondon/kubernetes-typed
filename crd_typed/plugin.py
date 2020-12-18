@@ -1,9 +1,9 @@
-from typing import Callable, List, Optional, Union
+from typing import Any, Callable, List, Optional, cast
 
 import yaml
 from jsonschema_typed.plugin import APIv4, TypeMaker
 from mypy.plugin import AnalyzeTypeContext, Plugin
-from mypy.types import AnyType, RawExpressionType, TypedDictType, TypeOfAny, UnboundType
+from mypy.types import AnyType, RawExpressionType, Type, TypeOfAny, UnboundType
 
 
 class CRDPlugin(Plugin):
@@ -22,13 +22,21 @@ class CRDPlugin(Plugin):
         return [(10, "mypy_extensions", -1)]
 
 
-def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
+def custom_resource_callback(ctx: AnalyzeTypeContext) -> Type:
     if not ctx.type.args:
         return ctx.type
 
     definition_path, *sub_schema = list(map(resolve_arg, ctx.type.args))
 
     openapi_schema = load_schema(definition_path)
+
+    if openapi_schema is None:
+        ctx.api.fail(
+            "CustomResourceDefinition at {0} has empty schema ".format(definition_path),
+            ctx.context,
+        )
+
+        return AnyType(TypeOfAny.unannotated)
 
     if sub_schema:
         openapi_schema = get_sub_schema(openapi_schema, sub_schema)
@@ -48,17 +56,17 @@ def custom_resource_callback(ctx: AnalyzeTypeContext) -> TypedDictType:
     return _type
 
 
-def resolve_arg(value: Union[RawExpressionType, UnboundType]):
-    var: str
+def resolve_arg(value: Any) -> str:
+    var: str = ""
     if isinstance(value, RawExpressionType):
-        var = value.literal_value
-    else:
-        var = value.original_str_expr
+        var = cast(str, value.literal_value)
+    elif isinstance(value, UnboundType):
+        var = cast(str, value.original_str_expr)
 
     return var
 
 
-def load_schema(path: str) -> dict:
+def load_schema(path: str) -> Optional[dict]:
     with open(path, "r") as stream:
         schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"][
             "openAPIV3Schema"
@@ -67,7 +75,7 @@ def load_schema(path: str) -> dict:
     return schema
 
 
-def get_sub_schema(schema: dict, keys: List[str]) -> dict:
+def get_sub_schema(schema: dict, keys: List[str]) -> Optional[dict]:
     _schema = schema
     for key in keys:
         try:

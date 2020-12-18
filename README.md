@@ -1,5 +1,8 @@
 # kubernetes-typed
 
+![Build status](https://github.com/gordonbondon/kubernetes-typed/workflows/Test/badge.svg?branch=master)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+
 mypy plugin to dynamically define types for Kubernetes objects.
 
 ##  Custom Resource Definitions

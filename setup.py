@@ -9,6 +9,7 @@ tests_require = [
     "kubernetes==12.0.1",
     "pytest",
     "tox",
+    "tox-gh-actions",
 ]
 
 setup(

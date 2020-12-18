@@ -42,10 +42,10 @@ cases: List[Tuple[str, Expect]] = [
     (
         "wrong_spec.py",
         Expect(
-            normal="",
-            error="""
-                error: CustomResourceDefinition at tests/crd_typed/cases/nested_crd.yaml does not have type object subschema defined for ['spec', 'wrongObject']
+            normal="""
+                error: CustomResourceDefinition at tests/crd_typed/cases/wrong_spec.yaml does not have type object subschema defined for ['spec', 'wrongObject']
             """,
+            error="",
             exit_status=1,
         ),
     ),

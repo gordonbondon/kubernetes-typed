@@ -30,7 +30,7 @@ tests_require = [
 setup(
     name="kubernetes-typed",
     packages=["crd_typed", "kubernetes-stubs"],
-    package_data={"django-stubs": find_stub_files("django-stubs")},
+    package_data={"kubernetes-stubs": find_stub_files("kubernetes-stubs")},
     install_requires=[
         "jsonschema-typed-v2",
         "kubernetes",  # required by PEP 561

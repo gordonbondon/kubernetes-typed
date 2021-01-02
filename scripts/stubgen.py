@@ -1,6 +1,5 @@
 import os
 import shutil
-import sys
 from argparse import ArgumentParser
 from pathlib import Path
 

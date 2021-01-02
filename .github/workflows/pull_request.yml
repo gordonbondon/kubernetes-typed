@@ -1,5 +1,8 @@
 name: Test
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
@@ -36,7 +39,9 @@ jobs:
       - name: Cache tox
         uses: actions/cache@v2
         with:
-          path: .tox
+          path: |
+            .tox
+            **/.pytest_cache
           key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ hashFiles('requirements-test.txt') }}-${{ hashFiles('setup.py') }}
           restore-keys: |
             ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ hashFiles('requirements-test.txt') }}-${{ hashFiles('setup.py') }}

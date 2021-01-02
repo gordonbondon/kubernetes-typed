@@ -5,7 +5,7 @@
 
 mypy plugin to dynamically define types for Kubernetes objects.
 
-##  Custom Resource Definitions
+## Custom Resource Definitions
 
 Configure `mypy`:
 ```ini
@@ -45,6 +45,11 @@ from crd_type import CustomResource
 
 resource: CustomResource["relative/path/to/crd.yaml", "spec", "some_array_of_objects", "items"]
 ```
+
 ### Limitations
 
 - CRDs that use `additionalProperties` are not supported.
+
+## Kubernetes Python Client types
+
+This package provides [type stubs](https://www.python.org/dev/peps/pep-0561/) for [kubernetes python client](https://github.com/kubernetes-client/python)

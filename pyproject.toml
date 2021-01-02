@@ -15,4 +15,6 @@ force-exclude = '''
     | \.tox
     | \.venv
     | /kubernetes-stubs/
+    | /kubernetes-python-source/
+    | setup.cfg
 '''

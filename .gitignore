@@ -47,3 +47,7 @@ include/
 
 .tox
 pip-wheel-metadata
+
+stubgen/
+kubernetes-stubs/kubernetes/
+kubernetes-python-source/

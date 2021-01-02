@@ -15,4 +15,5 @@ force-exclude = '''
     | \.tox
     | \.venv
     | /kubernetes-stubs/
+    | setup.cfg
 '''

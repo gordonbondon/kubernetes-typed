@@ -2,6 +2,7 @@ from setuptools import setup
 
 tests_require = [
     "black",
+    "gitpython==3.1.9",
     "isort",
     "flake8",
     "flake8-black",
@@ -14,7 +15,7 @@ tests_require = [
 
 setup(
     name="kubernetes-typed",
-    packages=["crd_typed"],
+    packages=["crd_typed", "kubernetes-stubs"],
     install_requires=[
         "jsonschema-typed-v2",
         "mypy>=0.750, <=0.790",

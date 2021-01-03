@@ -41,7 +41,7 @@ jobs:
         with:
           path: |
             .tox
-            **/.pytest_cache
+            !**/.pytest_cache
           key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ hashFiles('requirements-test.txt') }}-${{ hashFiles('setup.py') }}
           restore-keys: |
             ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ hashFiles('requirements-test.txt') }}-${{ hashFiles('setup.py') }}

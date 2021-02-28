@@ -55,9 +55,7 @@ cases: List[Tuple[str, Expect]] = [
 
 @pytest.mark.parametrize("case_file, expected", cases)
 def test_cases(case_file: str, expected: Expect):
-    normal_report, error_report, exit_status = api.run(
-        ["--show-traceback", os.path.join(case_directory, case_file)]
-    )
+    normal_report, error_report, exit_status = api.run(["--show-traceback", os.path.join(case_directory, case_file)])
 
     if expected["error"] == "":
         assert error_report == ""

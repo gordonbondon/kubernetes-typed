@@ -32,6 +32,7 @@ cases: List[Tuple[str, Expect]] = [
             normal="""
                 note: Revealed type is 'builtins.str'
                 note: Revealed type is 'builtins.list[builtins.str]'
+                note: Revealed type is 'builtins.dict[builtins.str, builtins.list[builtins.str]]'
                 error: Incompatible types in assignment (expression has type "str", variable has type "List[str]")
             """,
             error="",

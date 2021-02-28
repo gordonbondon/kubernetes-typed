@@ -1,11 +1,10 @@
 from functools import partial
-from typing import Callable, List, Optional, Union
+from typing import Callable, Dict, List, Optional
 
 import kubernetes.client as kubernetes_client
 from mypy.checker import TypeChecker
 from mypy.nodes import TypeAlias, TypeInfo
 from mypy.plugin import AttributeContext, Plugin
-from mypy.semanal import SemanticAnalyzer
 from mypy.types import AnyType, Instance
 from mypy.types import Type as MypyType
 from mypy.types import TypeOfAny
@@ -103,35 +102,30 @@ def get_generic_type(api: TypeChecker, name: str) -> Optional[Instance]:
     """
 
     # TODO: pretty sure this is implemented somewhere inside mypy, byt I was not able to find it
-    open: str = ""
-    close: str = ""
+    start: str = ""
+    close: Dict[str, str] = {"(": ")", "[": "]"}
 
     square = name.find("[")
-    round = name.find("(")
+    paren = name.find("(")
 
-    if square != -1 and round != -1:
-        if square < round:
-            open = "["
-            close = "]"
-        elif round < square:
-            open = "("
-            close = ")"
+    if square != -1 and paren != -1:
+        if square < paren:
+            start = "["
+        elif paren < square:
+            start = "("
+    elif square != -1:
+        start = "["
+    elif paren != -1:
+        start = "("
 
-    if square != -1:
-        open = "["
-        close = "]"
-    elif round != -1:
-        open = "("
-        close = ")"
+    type_name = name.split(start)[0]
 
-    type_name = name.split(open)[0]
-
-    args = name[name.find(open) + 1 : name.rfind(close)].split(",")
+    args = name[name.find(start) + 1 : name.rfind(close[start])].split(",")
 
     type_args: List[MypyType] = []
 
     for arg in args:
-        type_arg = get_type(api, arg)
+        type_arg = get_type(api, arg.strip())
         if type_arg is not None:
             type_args.append(type_arg)
 

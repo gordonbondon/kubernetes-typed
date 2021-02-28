@@ -31,6 +31,7 @@ cases: List[Tuple[str, Expect]] = [
         Expect(
             normal="""
                 note: Revealed type is 'TypedDict('Jsonschema', {'stringProperty'?: builtins.str})'
+                note: Revealed type is 'builtins.list[TypedDict({'integerProperty'?: builtins.int})]'
                 note: Revealed type is 'TypedDict('Jsonschema', {'integerProperty'?: builtins.int})'
                 error: Argument 2 has incompatible type "int"; expected "str"
                 error: Argument 2 has incompatible type "str"; expected "int"

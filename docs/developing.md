@@ -3,8 +3,12 @@
 ```shell
 python -m venv .venv
 source .venv/bin/activate
-pip install requirements-test.txt
+pip install requirements-dev.txt
 ```
+
+## Debugging
+
+Run `mypy` with `--show-traceback` and `--pdb`
 
 ## References
 

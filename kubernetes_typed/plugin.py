@@ -1,5 +1,5 @@
 from functools import partial
-from typing import Callable, Optional, Union
+from typing import Callable, List, Optional, Union
 
 import kubernetes.client as kubernetes_client
 from mypy.checker import TypeChecker
@@ -53,6 +53,7 @@ class KubernetesPlugin(Plugin):
 
 
 def attribute_callback(ctx: AttributeContext, name: str) -> MypyType:
+    assert isinstance(ctx.api, TypeChecker)
     typ = get_type(ctx.api, name)
 
     if typ is None:
@@ -61,7 +62,7 @@ def attribute_callback(ctx: AttributeContext, name: str) -> MypyType:
     return typ
 
 
-def get_type(api: Union[TypeChecker, SemanticAnalyzer], name: str) -> Optional[Instance]:
+def get_type(api: TypeChecker, name: str) -> Optional[Instance]:
     if name.find("(") != -1 or name.find("[") != -1:
         return get_generic_type(api, name)
 
@@ -95,7 +96,7 @@ def get_type(api: Union[TypeChecker, SemanticAnalyzer], name: str) -> Optional[I
     return None
 
 
-def get_generic_type(api: Union[TypeChecker, SemanticAnalyzer], name: str) -> Optional[Instance]:
+def get_generic_type(api: TypeChecker, name: str) -> Optional[Instance]:
     """Parse generic type definition from type hint string
 
     For example list[str], dict(str, str), etc.
@@ -127,7 +128,14 @@ def get_generic_type(api: Union[TypeChecker, SemanticAnalyzer], name: str) -> Op
 
     args = name[name.find(open) + 1 : name.rfind(close)].split(",")
 
-    return api.named_generic_type(type_name, [get_type(api, arg) for arg in args])
+    type_args: List[MypyType] = []
+
+    for arg in args:
+        type_arg = get_type(api, arg)
+        if type_arg is not None:
+            type_args.append(type_arg)
+
+    return api.named_generic_type(type_name, type_args)
 
 
 def plugin(_version: str):

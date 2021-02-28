@@ -26,14 +26,36 @@ cases: List[Tuple[str, Expect]] = [
             exit_status=1,
         ),
     ),
+    (
+        "read_builtins.py",
+        Expect(
+            normal="""
+                note: Revealed type is 'builtins.str'
+                note: Revealed type is 'builtins.list[builtins.str]'
+                note: Revealed type is 'builtins.dict[builtins.str, builtins.list[builtins.str]]'
+                error: Incompatible types in assignment (expression has type "str", variable has type "List[str]")
+            """,
+            error="",
+            exit_status=1,
+        ),
+    ),
+    (
+        "read_kubernetes.py",
+        Expect(
+            normal="""
+                note: Revealed type is 'kubernetes.client.models.v1_pod_spec.V1PodSpec'
+                note: Revealed type is 'builtins.str'
+            """,
+            error="",
+            exit_status=1,
+        ),
+    ),
 ]
 
 
 @pytest.mark.parametrize("case_file, expected", cases)
 def test_cases(case_file: str, expected: Expect):
-    normal_report, error_report, exit_status = api.run(
-        ["--show-traceback", os.path.join(case_directory, case_file)]
-    )
+    normal_report, error_report, exit_status = api.run(["--show-traceback", os.path.join(case_directory, case_file)])
 
     if expected["error"] == "":
         assert error_report == ""

@@ -29,12 +29,12 @@ tests_require = [
 
 setup(
     name="kubernetes-typed",
-    packages=["crd_typed", "kubernetes-stubs"],
+    packages=["crd_typed", "kubernetes_typed", "kubernetes-stubs"],
     package_data={"kubernetes-stubs": find_stub_files("kubernetes-stubs")},
     install_requires=[
         "jsonschema-typed-v2",
         "kubernetes",  # required by PEP 561
-        "mypy>=0.750, <=0.790",
+        "mypy>=0.750, <=0.812",
         "mypy-extensions",
         "PyYAML",
     ],

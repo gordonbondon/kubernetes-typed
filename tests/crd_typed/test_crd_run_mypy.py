@@ -31,6 +31,7 @@ cases: List[Tuple[str, Expect]] = [
         Expect(
             normal="""
                 note: Revealed type is 'TypedDict('Jsonschema', {'stringProperty'?: builtins.str})'
+                note: Revealed type is 'builtins.list[TypedDict({'integerProperty'?: builtins.int})]'
                 note: Revealed type is 'TypedDict('Jsonschema', {'integerProperty'?: builtins.int})'
                 error: Argument 2 has incompatible type "int"; expected "str"
                 error: Argument 2 has incompatible type "str"; expected "int"
@@ -54,9 +55,7 @@ cases: List[Tuple[str, Expect]] = [
 
 @pytest.mark.parametrize("case_file, expected", cases)
 def test_cases(case_file: str, expected: Expect):
-    normal_report, error_report, exit_status = api.run(
-        ["--show-traceback", os.path.join(case_directory, case_file)]
-    )
+    normal_report, error_report, exit_status = api.run(["--show-traceback", os.path.join(case_directory, case_file)])
 
     if expected["error"] == "":
         assert error_report == ""

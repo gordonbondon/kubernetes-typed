@@ -68,9 +68,7 @@ def resolve_arg(value: Any) -> str:
 
 def load_schema(path: str) -> Optional[dict]:
     with open(path, "r") as stream:
-        schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"][
-            "openAPIV3Schema"
-        ]
+        schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
 
     return schema
 

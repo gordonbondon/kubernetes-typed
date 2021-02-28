@@ -14,9 +14,7 @@ STUBS_CLIENT_MODULE_DIRECTORY = PROJECT_DIRECTORY / "kubernetes-stubs" / "client
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument(
-        "--kubernetes_python_version", required=False, default=DEFAULT_BRANCH
-    )
+    parser.add_argument("--kubernetes_python_version", required=False, default=DEFAULT_BRANCH)
     parser.add_argument("--commit_sha", required=False)
 
     args = parser.parse_args()
@@ -31,4 +29,4 @@ if __name__ == "__main__":
     if STUBS_CLIENT_MODULE_DIRECTORY.exists():
         shutil.rmtree(STUBS_CLIENT_MODULE_DIRECTORY)
 
-    shutil.move(STUBS_TMP_CLIENT_MODULE_DIRECTORY, STUBS_CLIENT_MODULE_DIRECTORY)
+    shutil.move(STUBS_TMP_CLIENT_MODULE_DIRECTORY.stem, STUBS_CLIENT_MODULE_DIRECTORY)

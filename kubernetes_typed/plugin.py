@@ -36,7 +36,11 @@ class KubernetesPlugin(Plugin):
 
             oapi = getattr(klass, self.OPENAPI_ATTRIBUTE)
 
-            return partial(attribute_callback, name=oapi[attr_name])
+            name = oapi.get(attr_name)
+            if name is None:
+                return None
+
+            return partial(attribute_callback, name=name)
 
         return None
 

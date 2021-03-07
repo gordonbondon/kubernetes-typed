@@ -71,10 +71,7 @@ def get_type(api: TypeChecker, name: str) -> Optional[Instance]:
         return get_generic_type(api, name)
 
     try:
-        klass = NATIVE_TYPES_MAPPING.get(name)
-
-        if klass is None:
-            return None
+        klass = NATIVE_TYPES_MAPPING[name]
 
         return api.named_type("{}.{}".format(klass.__module__, klass.__qualname__))
     except KeyError:

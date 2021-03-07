@@ -33,6 +33,7 @@ cases: List[Tuple[str, Expect]] = [
                 note: Revealed type is 'builtins.str'
                 note: Revealed type is 'builtins.list[builtins.str]'
                 note: Revealed type is 'builtins.dict[builtins.str, builtins.list[builtins.str]]'
+                note: Revealed type is 'datetime.datetime'
                 error: Incompatible types in assignment (expression has type "str", variable has type "List[str]")
             """,
             error="",
@@ -45,6 +46,16 @@ cases: List[Tuple[str, Expect]] = [
             normal="""
                 note: Revealed type is 'kubernetes.client.models.v1_pod_spec.V1PodSpec'
                 note: Revealed type is 'builtins.str'
+            """,
+            error="",
+            exit_status=1,
+        ),
+    ),
+    (
+        "ensure_any.py",
+        Expect(
+            normal="""
+                note: Revealed type is 'Any'
             """,
             error="",
             exit_status=1,

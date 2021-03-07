@@ -9,12 +9,13 @@ from mypy.types import AnyType, Instance
 from mypy.types import Type as MypyType
 from mypy.types import TypeOfAny
 
+KUBERNETES_CLIENT_PREFIX = "kubernetes.client.models."
+OPENAPI_ATTRIBUTE = "openapi_types"
+NATIVE_TYPES_MAPPING = kubernetes_client.ApiClient.NATIVE_TYPES_MAPPING
+
 
 class KubernetesPlugin(Plugin):
     """Provides support for Kubernetes client types."""
-
-    KUBERNETES_CLIENT_PREFIX = "kubernetes.client.models."
-    OPENAPI_ATTRIBUTE = "openapi_types"
 
     # def get_type_analyze_hook(self, fullname: str) -> Optional[Callable]:
     #     if fullname.startswith(self.KUBERNETES_CLIENT_PREFIX):
@@ -24,7 +25,7 @@ class KubernetesPlugin(Plugin):
     #     return None
 
     def get_attribute_hook(self, fullname: str) -> Optional[Callable[[AttributeContext], MypyType]]:
-        if fullname.startswith(self.KUBERNETES_CLIENT_PREFIX):
+        if fullname.startswith(KUBERNETES_CLIENT_PREFIX):
             class_path, _, attr_name = fullname.rpartition(".")
 
             _, _, class_name = class_path.rpartition(".")
@@ -34,7 +35,7 @@ class KubernetesPlugin(Plugin):
             if klass is None:
                 return None
 
-            oapi = getattr(klass, self.OPENAPI_ATTRIBUTE)
+            oapi = getattr(klass, OPENAPI_ATTRIBUTE)
 
             name = oapi.get(attr_name)
             if name is None:
@@ -70,20 +71,21 @@ def get_type(api: TypeChecker, name: str) -> Optional[Instance]:
         return get_generic_type(api, name)
 
     try:
-        typ = api.named_type("builtins.{}".format(name))
-        return typ
+        klass = NATIVE_TYPES_MAPPING[name]
+
+        return api.named_type("{}.{}".format(klass.__module__, klass.__qualname__))
     except KeyError:
         pass
 
     try:
-        type_class = getattr(kubernetes_client, name, None)
+        klass = getattr(kubernetes_client, name, None)
 
-        if type_class is None:
+        if klass is None:
             return None
 
         # ref: mypy.checker.lookup_qualified
-        n = api.modules[type_class.__module__]
-        sym = n.names[type_class.__qualname__]
+        n = api.modules[klass.__module__]
+        sym = n.names[klass.__qualname__]
 
         # ref: mypy.checker.named_type
         node = sym.node

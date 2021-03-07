@@ -16,7 +16,7 @@ mypy plugin to dynamically define types for Kubernetes objects.
 
 Install with `pip` from source:
 ```shell
-pip install https://github.com/gordonbondon/kubernetes-typed/archive/master.zip#egg=kubernetes-typed
+pip install -e git+https://github.com/gordonbondon/kubernetes-typed.get#egg=kubernetes-typed
 ```
 
 ## Custom Resource Definitions

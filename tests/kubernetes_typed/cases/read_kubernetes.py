@@ -1,8 +1,12 @@
 from typing import TYPE_CHECKING
 
 from kubernetes import client
+from kubernetes.client.configuration import Configuration
 
-container = client.V1Container(name="pi", image="perl", command=["perl"])
+conf = Configuration()
+conf.client_side_validation = False
+
+container = client.V1Container(name="pi", image="perl", command=["perl"], local_vars_configuration=conf)
 
 template = client.V1PodTemplateSpec(
     metadata=client.V1ObjectMeta(labels={"app": "pi"}),

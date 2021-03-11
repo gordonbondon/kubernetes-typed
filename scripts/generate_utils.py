@@ -7,17 +7,29 @@ from mypy.stubgen import generate_stubs, parse_options
 
 
 def clone_and_generate(clone_dir: Path, package_dir: Path, dst_dir: Path, branch: str):
+    """
+    Clone source repo and generate stubs for package
+
+    :param Path clone_dir: Where to clone source repo
+    :param Path package_dir: Path to module that needs stubs generated
+    :param Path dst_dir: Destination path for stubs
+    :param str branch: Which branch to clone
+    """
+
     if clone_dir.exists():
         shutil.rmtree(clone_dir)
     clone_dir.mkdir(exist_ok=True, parents=False)
 
-    Repo.clone_from(
+    repo = Repo.clone_from(
         "https://github.com/kubernetes-client/python.git",
         clone_dir,
         progress=RemoteProgress(),
         branch=branch,
         depth=1,
     )
+
+    for submodule in repo.submodules:
+        submodule.update(init=True)
 
     stubgen_options = parse_options(
         [

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import shutil
 from argparse import ArgumentParser
 from pathlib import Path
@@ -7,10 +9,10 @@ from scripts.generate_utils import clone_and_generate
 DEFAULT_BRANCH = "release-12.0"
 PROJECT_DIRECTORY = Path(__file__).parent.parent
 K8S_SOURCE_DIRECTORY = PROJECT_DIRECTORY / "kubernetes-python-source"
-K8S_CLIENT_MODULE_DIRECTORY = K8S_SOURCE_DIRECTORY / "kubernetes" / "client"
+K8S_CLIENT_MODULE_DIRECTORY = K8S_SOURCE_DIRECTORY / "kubernetes"
 STUBS_TMP_DIRECTORY = PROJECT_DIRECTORY / "stubgen"
-STUBS_TMP_CLIENT_MODULE_DIRECTORY = STUBS_TMP_DIRECTORY / "kubernetes" / "client"
-STUBS_CLIENT_MODULE_DIRECTORY = PROJECT_DIRECTORY / "kubernetes-stubs" / "client"
+STUBS_TMP_CLIENT_MODULE_DIRECTORY = STUBS_TMP_DIRECTORY / "kubernetes"
+STUBS_CLIENT_MODULE_DIRECTORY = PROJECT_DIRECTORY / "kubernetes-stubs"
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -29,4 +31,4 @@ if __name__ == "__main__":
     if STUBS_CLIENT_MODULE_DIRECTORY.exists():
         shutil.rmtree(STUBS_CLIENT_MODULE_DIRECTORY)
 
-    shutil.move(STUBS_TMP_CLIENT_MODULE_DIRECTORY.stem, STUBS_CLIENT_MODULE_DIRECTORY)
+    shutil.move(STUBS_TMP_CLIENT_MODULE_DIRECTORY.absolute().as_posix(), STUBS_CLIENT_MODULE_DIRECTORY)

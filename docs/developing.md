@@ -6,6 +6,12 @@ source .venv/bin/activate
 pip install requirements-dev.txt
 ```
 
+## Regenerate stubs
+
+```
+python ./scripts/stubgen.py
+```
+
 ## Debugging
 
 Run `mypy` with `--show-traceback` and `--pdb`

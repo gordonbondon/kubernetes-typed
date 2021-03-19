@@ -6,7 +6,7 @@ from kubernetes.client.configuration import Configuration
 conf = Configuration()
 conf.client_side_validation = False
 
-container = client.V1Container(name="pi", image="perl", command=["perl"], local_vars_configuration=conf)
+container = client.V1Container(name=1, image="perl", command=["perl"], local_vars_configuration=conf)
 
 template = client.V1PodTemplateSpec(
     metadata=client.V1ObjectMeta(labels={"app": "pi"}),

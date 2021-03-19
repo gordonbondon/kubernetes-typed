@@ -1,4 +1,3 @@
-import datetime
 from typing import TYPE_CHECKING
 
 from kubernetes import client

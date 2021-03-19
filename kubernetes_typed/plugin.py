@@ -1,13 +1,13 @@
 from functools import partial
-from typing import Callable, Dict, List, Optional
+from typing import Callable, Dict, List, Optional, Tuple
 
 import kubernetes.client as kubernetes_client
 from mypy.checker import TypeChecker
-from mypy.nodes import TypeAlias, TypeInfo
-from mypy.plugin import AttributeContext, Plugin
-from mypy.types import AnyType, Instance
+from mypy.nodes import MypyFile, TypeAlias, TypeInfo
+from mypy.plugin import AttributeContext, CallableType, FunctionSigContext, Plugin
+from mypy.types import AnyType, Instance, NoneType
 from mypy.types import Type as MypyType
-from mypy.types import TypeOfAny
+from mypy.types import TypeOfAny, UnionType
 
 KUBERNETES_CLIENT_PREFIX = "kubernetes.client.models."
 OPENAPI_ATTRIBUTE = "openapi_types"
@@ -17,27 +17,13 @@ NATIVE_TYPES_MAPPING = kubernetes_client.ApiClient.NATIVE_TYPES_MAPPING
 class KubernetesPlugin(Plugin):
     """Provides support for Kubernetes client types."""
 
-    # def get_type_analyze_hook(self, fullname: str) -> Optional[Callable]:
-    #     if fullname.startswith(self.KUBERNETES_CLIENT_PREFIX):
-    #         print("get_type_analyze_hook: " + fullname)
-    #         return None
-
-    #     return None
-
     def get_attribute_hook(self, fullname: str) -> Optional[Callable[[AttributeContext], MypyType]]:
         if fullname.startswith(KUBERNETES_CLIENT_PREFIX):
             class_path, _, attr_name = fullname.rpartition(".")
 
             _, _, class_name = class_path.rpartition(".")
 
-            klass = getattr(kubernetes_client, class_name, None)
-
-            if klass is None:
-                return None
-
-            oapi = getattr(klass, OPENAPI_ATTRIBUTE)
-
-            name = oapi.get(attr_name)
+            name = get_model_openapi_type_name(class_name, attr_name)
             if name is None:
                 return None
 
@@ -45,20 +31,56 @@ class KubernetesPlugin(Plugin):
 
         return None
 
-    # def get_dynamic_class_hook(self, fullname: str) -> Optional[Callable[[DynamicClassDefContext], None]]:
-    #     if fullname.startswith(self.KUBERNETES_CLIENT_PREFIX):
-    #         print("get_dynamic_class_hook: " + fullname)
-    #         class_name, _, _ = fullname.rpartition(".")
+    def get_function_signature_hook(self, fullname: str) -> Optional[Callable[[FunctionSigContext], CallableType]]:
+        if fullname.startswith(KUBERNETES_CLIENT_PREFIX):
+            return function_signature_callback
 
-    #         print(class_name)
-    #         return None
+        return None
 
-    #     return None
+    def get_additional_deps(self, _: MypyFile) -> List[Tuple[int, str, int]]:
+        """Add ``datetime`` as a dependency, required by NATIVE_TYPES_MAPPING."""
+        return [(10, "datetime", -1)]
+
+
+def function_signature_callback(ctx: FunctionSigContext) -> CallableType:
+    assert isinstance(ctx.api, TypeChecker)
+
+    signature = ctx.default_signature
+
+    try:
+        new_arg_types: List[MypyType] = [UnionType([AnyType(TypeOfAny.implementation_artifact), NoneType()])] * len(
+            signature.arg_names
+        )
+
+        for i in range(len(signature.arg_names)):
+            arg_name = signature.arg_names[i]
+
+            if arg_name is None:
+                continue
+
+            _, _, class_name = f"{signature.ret_type}".rpartition(".")
+
+            type_name = get_model_openapi_type_name(class_name, arg_name)
+
+            if type_name is None:
+                continue
+
+            typ = get_attribute_type(ctx.api, type_name)
+
+            if isinstance(typ, MypyType):
+                new_arg_types[i] = UnionType([typ, NoneType()])
+
+        signature.arg_types = new_arg_types
+
+        return signature
+    except KeyError:
+        return signature
 
 
 def attribute_callback(ctx: AttributeContext, name: str) -> MypyType:
     assert isinstance(ctx.api, TypeChecker)
-    typ = get_type(ctx.api, name)
+
+    typ = get_attribute_type(ctx.api, name)
 
     if typ is None:
         return AnyType(TypeOfAny.implementation_artifact)
@@ -66,7 +88,7 @@ def attribute_callback(ctx: AttributeContext, name: str) -> MypyType:
     return typ
 
 
-def get_type(api: TypeChecker, name: str) -> Optional[Instance]:
+def get_attribute_type(api: TypeChecker, name: str) -> Optional[Instance]:
     if name.find("(") != -1 or name.find("[") != -1:
         return get_generic_type(api, name)
 
@@ -131,11 +153,24 @@ def get_generic_type(api: TypeChecker, name: str) -> Optional[Instance]:
     type_args: List[MypyType] = []
 
     for arg in args:
-        type_arg = get_type(api, arg.strip())
+        type_arg = get_attribute_type(api, arg.strip())
         if type_arg is not None:
             type_args.append(type_arg)
 
     return api.named_generic_type(type_name, type_args)
+
+
+def get_model_openapi_type_name(class_name: str, attr_name: str) -> Optional[str]:
+    klass = getattr(kubernetes_client, class_name, None)
+
+    if klass is None:
+        return None
+
+    oapi = getattr(klass, OPENAPI_ATTRIBUTE)
+
+    name = oapi.get(attr_name)
+
+    return name
 
 
 def plugin(_version: str):

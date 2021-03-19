@@ -44,18 +44,9 @@ cases: List[Tuple[str, Expect]] = [
         "read_kubernetes.py",
         Expect(
             normal="""
+                error: Argument "name" to "V1Container" has incompatible type "int"; expected "Optional[str]"
                 note: Revealed type is 'kubernetes.client.models.v1_pod_spec.V1PodSpec'
                 note: Revealed type is 'builtins.str'
-            """,
-            error="",
-            exit_status=1,
-        ),
-    ),
-    (
-        "ensure_any.py",
-        Expect(
-            normal="""
-                note: Revealed type is 'Any'
             """,
             error="",
             exit_status=1,

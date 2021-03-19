@@ -1,5 +1,5 @@
 from functools import partial
-from typing import Callable, Dict, List, Optional, Sequence, Tuple, cast
+from typing import Callable, Dict, List, Optional, Tuple
 
 import kubernetes.client as kubernetes_client
 from mypy.checker import TypeChecker

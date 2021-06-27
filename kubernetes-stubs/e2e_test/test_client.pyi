@@ -2,6 +2,7 @@
 import unittest
 from kubernetes.client import api_client as api_client
 from kubernetes.client.api import core_v1_api as core_v1_api
+from kubernetes.client.rest import ApiException as ApiException
 from kubernetes.e2e_test import base as base
 from kubernetes.stream import portforward as portforward, stream as stream
 from kubernetes.stream.ws_client import ERROR_CHANNEL as ERROR_CHANNEL

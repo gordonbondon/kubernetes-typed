@@ -5,10 +5,9 @@ from kubernetes.client.api import core_v1_api as core_v1_api
 from kubernetes.e2e_test import base as base
 from kubernetes.stream import portforward as portforward, stream as stream
 from kubernetes.stream.ws_client import ERROR_CHANNEL as ERROR_CHANNEL
-from typing import Any
 
 def short_uuid(): ...
-def manifest_with_command(name: Any, command: Any): ...
+def manifest_with_command(name, command): ...
 
 class TestClient(unittest.TestCase):
     @classmethod

@@ -4,10 +4,9 @@ from kubernetes import watch as watch
 from kubernetes.client import api_client as api_client
 from kubernetes.client.api import core_v1_api as core_v1_api
 from kubernetes.e2e_test import base as base
-from typing import Any
 
 def short_uuid(): ...
-def config_map_with_value(name: Any, value: Any): ...
+def config_map_with_value(name, value): ...
 
 class TestClient(unittest.TestCase):
     @classmethod

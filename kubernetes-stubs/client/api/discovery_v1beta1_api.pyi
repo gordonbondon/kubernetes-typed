@@ -3,7 +3,7 @@ from kubernetes.client.api_client import ApiClient as ApiClient
 from kubernetes.client.exceptions import ApiTypeError as ApiTypeError, ApiValueError as ApiValueError
 from typing import Any
 
-class DiscoveryV1alpha1Api:
+class DiscoveryV1beta1Api:
     api_client: Any
     def __init__(self, api_client: Any | None = ...) -> None: ...
     def create_namespaced_endpoint_slice(self, namespace, body, **kwargs): ...

@@ -2,7 +2,7 @@
 from kubernetes.client.configuration import Configuration as Configuration
 from typing import Any
 
-class V1alpha1Endpoint:
+class V1beta1Endpoint:
     openapi_types: Any
     attribute_map: Any
     local_vars_configuration: Any

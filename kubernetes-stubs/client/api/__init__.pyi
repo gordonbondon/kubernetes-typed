@@ -38,11 +38,13 @@ from kubernetes.client.api.core_api import CoreApi as CoreApi
 from kubernetes.client.api.core_v1_api import CoreV1Api as CoreV1Api
 from kubernetes.client.api.custom_objects_api import CustomObjectsApi as CustomObjectsApi
 from kubernetes.client.api.discovery_api import DiscoveryApi as DiscoveryApi
-from kubernetes.client.api.discovery_v1alpha1_api import DiscoveryV1alpha1Api as DiscoveryV1alpha1Api
+from kubernetes.client.api.discovery_v1beta1_api import DiscoveryV1beta1Api as DiscoveryV1beta1Api
 from kubernetes.client.api.events_api import EventsApi as EventsApi
 from kubernetes.client.api.events_v1beta1_api import EventsV1beta1Api as EventsV1beta1Api
 from kubernetes.client.api.extensions_api import ExtensionsApi as ExtensionsApi
 from kubernetes.client.api.extensions_v1beta1_api import ExtensionsV1beta1Api as ExtensionsV1beta1Api
+from kubernetes.client.api.flowcontrol_apiserver_api import FlowcontrolApiserverApi as FlowcontrolApiserverApi
+from kubernetes.client.api.flowcontrol_apiserver_v1alpha1_api import FlowcontrolApiserverV1alpha1Api as FlowcontrolApiserverV1alpha1Api
 from kubernetes.client.api.logs_api import LogsApi as LogsApi
 from kubernetes.client.api.networking_api import NetworkingApi as NetworkingApi
 from kubernetes.client.api.networking_v1_api import NetworkingV1Api as NetworkingV1Api

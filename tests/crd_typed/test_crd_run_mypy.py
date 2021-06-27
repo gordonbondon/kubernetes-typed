@@ -18,9 +18,9 @@ cases: List[Tuple[str, Expect]] = [
         "reads_crd.py",
         Expect(
             normal="""
-                note: Revealed type is 'TypedDict('Jsonschema', {'spec'?: TypedDict({'cronSpec'?: builtins.str, 'replicas'?: builtins.int})})'
-                error: Argument 2 has incompatible type "int"; expected "str"
-                error: Argument 2 has incompatible type "str"; expected "int"
+                8: note: Revealed type is "TypedDict('Jsonschema', {'spec'?: TypedDict({'cronSpec'?: builtins.str, 'replicas'?: builtins.int})})"
+                10: error: Value of "cronSpec" has incompatible type "int"; expected "str"
+                11: error: Value of "replicas" has incompatible type "str"; expected "int"
             """,
             error="",
             exit_status=1,
@@ -30,11 +30,11 @@ cases: List[Tuple[str, Expect]] = [
         "nested_crd.py",
         Expect(
             normal="""
-                note: Revealed type is 'TypedDict('Jsonschema', {'stringProperty'?: builtins.str})'
-                note: Revealed type is 'builtins.list[TypedDict({'integerProperty'?: builtins.int})]'
-                note: Revealed type is 'TypedDict('Jsonschema', {'integerProperty'?: builtins.int})'
-                error: Argument 2 has incompatible type "int"; expected "str"
-                error: Argument 2 has incompatible type "str"; expected "int"
+                10: note: Revealed type is "TypedDict('Jsonschema', {'stringProperty'?: builtins.str})"
+                11: note: Revealed type is "builtins.list[TypedDict({'integerProperty'?: builtins.int})]"
+                12: note: Revealed type is "TypedDict('Jsonschema', {'integerProperty'?: builtins.int})"
+                14: error: Value of "stringProperty" has incompatible type "int"; expected "str"
+                15: error: Value of "integerProperty" has incompatible type "str"; expected "int"
             """,
             error="",
             exit_status=1,
@@ -44,7 +44,7 @@ cases: List[Tuple[str, Expect]] = [
         "wrong_spec.py",
         Expect(
             normal="""
-                error: CustomResourceDefinition at tests/crd_typed/cases/wrong_spec.yaml does not have type object subschema defined for ['spec', 'wrongObject']
+                5: error: CustomResourceDefinition at tests/crd_typed/cases/wrong_spec.yaml does not have type object subschema defined for ['spec', 'wrongObject']
             """,
             error="",
             exit_status=1,

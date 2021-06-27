@@ -34,7 +34,7 @@ setup(
     install_requires=[
         "jsonschema-typed-v2",
         "kubernetes",  # required by PEP 561
-        "mypy>=0.750, <=0.812",
+        "mypy>=0.800, <=0.910",
         "mypy-extensions",
         "PyYAML",
     ],

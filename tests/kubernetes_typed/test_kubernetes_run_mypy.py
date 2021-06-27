@@ -18,8 +18,8 @@ cases: List[Tuple[str, Expect]] = [
         "read_type.py",
         Expect(
             normal="""
-                note: Revealed type is 'kubernetes.client.models.v1_container.V1Container'
-                note: Revealed type is 'kubernetes.client.models.v1_job.V1Job'
+                note: Revealed type is "kubernetes.client.models.v1_container.V1Container"
+                note: Revealed type is "kubernetes.client.models.v1_job.V1Job"
                 error: "V1Job" has no attribute "status1"; maybe "status"?
             """,
             error="",
@@ -30,10 +30,10 @@ cases: List[Tuple[str, Expect]] = [
         "read_builtins.py",
         Expect(
             normal="""
-                note: Revealed type is 'builtins.str'
-                note: Revealed type is 'builtins.list[builtins.str]'
-                note: Revealed type is 'builtins.dict[builtins.str, builtins.list[builtins.str]]'
-                note: Revealed type is 'datetime.datetime'
+                note: Revealed type is "builtins.str"
+                note: Revealed type is "builtins.list[builtins.str]"
+                note: Revealed type is "builtins.dict[builtins.str, builtins.list[builtins.str]]"
+                note: Revealed type is "datetime.datetime"
                 error: Incompatible types in assignment (expression has type "str", variable has type "List[str]")
             """,
             error="",
@@ -45,8 +45,8 @@ cases: List[Tuple[str, Expect]] = [
         Expect(
             normal="""
                 error: Argument "name" to "V1Container" has incompatible type "int"; expected "Optional[str]"
-                note: Revealed type is 'kubernetes.client.models.v1_pod_spec.V1PodSpec'
-                note: Revealed type is 'builtins.str'
+                note: Revealed type is "kubernetes.client.models.v1_pod_spec.V1PodSpec"
+                note: Revealed type is "builtins.str"
             """,
             error="",
             exit_status=1,

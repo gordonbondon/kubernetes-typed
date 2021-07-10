@@ -52,12 +52,26 @@ cases: List[Tuple[str, Expect]] = [
             exit_status=1,
         ),
     ),
+    (
+        "dict_type.py",
+        Expect(
+            normal="""
+                9: error: Extra key "api_version" for TypedDict "V1PodDict"
+                24: note: Revealed type is "builtins.str"
+                26: error: Value of "name" has incompatible type "int"; expected "str"
+            """,
+            error="",
+            exit_status=1,
+        ),
+    ),
 ]
 
 
 @pytest.mark.parametrize("case_file, expected", cases)
 def test_cases(case_file: str, expected: Expect):
-    normal_report, error_report, exit_status = api.run(["--show-traceback", os.path.join(case_directory, case_file)])
+    normal_report, error_report, exit_status = api.run(
+        ["--show-traceback", "--install-types", "--non-interactive", os.path.join(case_directory, case_file)]
+    )
 
     if expected["error"] == "":
         assert error_report == ""

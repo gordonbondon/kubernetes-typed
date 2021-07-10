@@ -11,6 +11,7 @@ from mypy.types import TypeOfAny, UnionType
 
 KUBERNETES_CLIENT_PREFIX = "kubernetes.client.models."
 OPENAPI_ATTRIBUTE = "openapi_types"
+ATTRIBUTE_NAME_ATTRIBUTE = "attribute_map"
 NATIVE_TYPES_MAPPING = kubernetes_client.ApiClient.NATIVE_TYPES_MAPPING
 
 

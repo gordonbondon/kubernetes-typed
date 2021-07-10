@@ -1,0 +1,12 @@
+{% filter indent(0, True) -%}
+{% if models -%}
+    {% for model in models -%}
+        {{ "from " -}}{{ model.module_full_name -}}{{ " import " -}}{{ model.name -}}{{ "\n" -}}
+    {% endfor %}
+__all__ = [
+    {% for model in models -%}
+        "{{ model.name }}",
+    {% endfor %}
+]
+{% endif -%}
+{% endfilter %}

@@ -4,10 +4,10 @@ import shutil
 from argparse import ArgumentParser
 from pathlib import Path
 
-from scripts.generate_utils import clone_and_generate
+from scripts.generate_utils import PROJECT_DIRECTORY, clone_and_generate
 
 DEFAULT_BRANCH = "release-17.0"
-PROJECT_DIRECTORY = Path(__file__).parent.parent
+
 K8S_SOURCE_DIRECTORY = PROJECT_DIRECTORY / "kubernetes-python-source"
 K8S_CLIENT_MODULE_DIRECTORY = K8S_SOURCE_DIRECTORY / "kubernetes"
 STUBS_TMP_DIRECTORY = PROJECT_DIRECTORY / "stubgen"

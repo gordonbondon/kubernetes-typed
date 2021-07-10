@@ -9,8 +9,8 @@ mypy plugin to dynamically define types for Kubernetes objects.
 
 ## Features
 
-* Type checking for [Custom Resources](#Custom-Resource-Definitions)
-* Type checking for [kubernetes-client](#Kubernetes-Python-Client-types)
+* [Type checking for Custom Resources](#Custom-Resource-Definitions)
+* [Type checking forkubernetes-client](#Kubernetes-Python-Client-types)
 
 ## Installation
 
@@ -93,3 +93,41 @@ To enable full type checking for classes use provided `kubernetes_typed` plugin.
 
 plugins = kubernetes_typed.plugin
 ```
+
+### Kubernetes Python Client Models Dict Types
+
+If you want to type check resource dicts instead of classes, you can use generated `TypedDict`s provided by this package.
+
+To do this for any model class in `kubernetes.client` append its name with `Dict`, and import it from `kubernetes_type.client`
+
+For example:
+
+`kubernetes.client.V1Pod` -> `kubernetes_typed.client.V1PodDict`
+
+```python
+from kubernetes.client.api import core_v1_api
+
+from kubernetes_typed.client import V1PodDict
+
+api_instance = core_v1_api.CoreV1Api()
+
+pod_manifest: V1PodDict = {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {"name": "test-pod"},
+    "spec": {
+        "containers": [
+            {
+                "image": "nginx",
+                "name": "nginx",
+            },
+        ],
+    },
+}
+
+api_instance.create_namespaced_pod(body=pod_manifest, namespace='default')
+```
+
+### Limitations
+
+* Kubernetes client api functions are currently not covered by stubs, so you might get `Call to untyped function` errors. Check [mypy config doc](https://mypy.readthedocs.io/en/stable/config_file.html) on how to disable separate warnings.

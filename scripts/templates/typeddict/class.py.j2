@@ -1,0 +1,29 @@
+{% if model.direct_import -%}
+{% for imp in model.direct_import -%}
+{{ "import " }}{{ imp }}{{ "\n" -}}
+{% endfor -%}
+{% endif -%}
+
+from typing import TypedDict{% if model.typing_import %}{{ ", " }}{{ model.typing_import | join(", ") }}{% endif %}{{ "\n" }}
+
+{% if model.model_import -%}
+{{ "from kubernetes_typed.client import " }}{{ model.model_import | join(", ") }}{{ "\n" }}
+{% endif -%}
+
+{# Using alternative pep-0589 syntzx to allow reserved keywords as keys -#}
+{{ model.name }} = TypedDict(
+{% filter indent(4, True) -%}
+    "{{ model.name }}",
+{{ "{}," if not model.attributes else "" -}}
+{% if model.attributes -%}
+    {
+    {% filter indent(4, False) -%}
+    {% for attribute in model.attributes -%}
+        "{{ attribute.name -}}"{{ ": " -}}{{ attribute.type -}}{{ ",\n" -}}
+    {% endfor -%}
+    {% endfilter -%}
+    },
+total=False,
+{% endif -%}
+{% endfilter -%}
+)

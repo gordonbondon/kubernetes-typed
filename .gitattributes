@@ -1,1 +1,2 @@
 kubernetes-stubs/**/*.pyi linguist-generated=true
+kubernetes_typed/client/**/*.py linguist-generated=true

@@ -9,7 +9,7 @@ from typing import TypedDict{% if model.typing_import %}{{ ", " }}{{ model.typin
 {{ "from kubernetes_typed.client import " }}{{ model.model_import | join(", ") }}{{ "\n" }}
 {% endif -%}
 
-{# Using alternative pep-0589 syntzx to allow reserved keywords as keys -#}
+{# Using pep 589 alternative syntax to allow reserved keywords as keys -#}
 {% filter indent(0, True) -%}
 {{ model.name }} = TypedDict(
 {% filter indent(4, True) -%}

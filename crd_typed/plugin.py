@@ -1,7 +1,8 @@
-from typing import Any, Callable, List, Optional, cast
+from typing import Any, Callable, Dict, List, Optional, Tuple, cast
 
 import yaml
 from jsonschema_typed.plugin import APIv4, TypeMaker
+from mypy.nodes import MypyFile
 from mypy.plugin import AnalyzeTypeContext, Plugin
 from mypy.types import AnyType, RawExpressionType, Type, TypeOfAny, UnboundType
 
@@ -11,13 +12,13 @@ class CRDPlugin(Plugin):
 
     CustomResource = "crd_typed.CustomResource"
 
-    def get_type_analyze_hook(self, fullname: str) -> Optional[Callable]:
+    def get_type_analyze_hook(self, fullname: str) -> Optional[Callable[[AnalyzeTypeContext], Type]]:
         if fullname == self.CustomResource:
             return custom_resource_callback
 
         return None
 
-    def get_additional_deps(self, file):
+    def get_additional_deps(self, file: MypyFile) -> List[Tuple[int, str, int]]:
         """Add ``mypy_extensions`` as a dependency."""
         return [(10, "mypy_extensions", -1)]
 
@@ -66,14 +67,14 @@ def resolve_arg(value: Any) -> str:
     return var
 
 
-def load_schema(path: str) -> Optional[dict]:
+def load_schema(path: str) -> Optional[Dict[Any, Any]]:
     with open(path, "r") as stream:
-        schema = yaml.safe_load(stream)["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
+        schema: Dict[Any, Any] = yaml.safe_load(stream)["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
 
     return schema
 
 
-def get_sub_schema(schema: dict, keys: List[str]) -> Optional[dict]:
+def get_sub_schema(schema: Dict[Any, Any], keys: List[str]) -> Optional[Dict[Any, Any]]:
     _schema = schema
     for key in keys:
         try:
@@ -87,5 +88,5 @@ def get_sub_schema(schema: dict, keys: List[str]) -> Optional[dict]:
     return _schema
 
 
-def plugin(_version: str):
+def plugin(_version: str) -> Any:
     return CRDPlugin

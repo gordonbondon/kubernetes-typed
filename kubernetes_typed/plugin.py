@@ -1,5 +1,5 @@
 from functools import partial
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import kubernetes.client as kubernetes_client
 from mypy.checker import TypeChecker
@@ -113,7 +113,7 @@ def get_attribute_type(api: TypeChecker, name: str) -> Optional[Instance]:
         # ref: mypy.checker.named_type
         node = sym.node
         if isinstance(node, TypeAlias):
-            assert isinstance(node.target, Instance)  # type: ignore
+            assert isinstance(node.target, Instance)
             node = node.target.type
         assert isinstance(node, TypeInfo)
         any_type = AnyType(TypeOfAny.from_omitted_generics)
@@ -169,10 +169,10 @@ def get_model_openapi_type_name(class_name: str, attr_name: str) -> Optional[str
 
     oapi = getattr(klass, OPENAPI_ATTRIBUTE)
 
-    name = oapi.get(attr_name)
+    name: str = oapi.get(attr_name)
 
     return name
 
 
-def plugin(_version: str):
+def plugin(_version: str) -> Any:
     return KubernetesPlugin

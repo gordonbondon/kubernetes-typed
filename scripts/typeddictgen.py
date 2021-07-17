@@ -28,9 +28,10 @@ class Attribute(object):
     Represents parsed state of kubernetes client model attribute
     """
 
-    def __init__(self, name: str, class_name: str) -> None:
+    def __init__(self, name: str, class_name: str, model_name: str) -> None:
         self.name = name
         self.class_name = class_name
+        self.model_name = model_name
         self.direct_import: List[str] = []
         self.typing_import: List[str] = []
         self.model_import: List[str] = []
@@ -42,17 +43,17 @@ class Attribute(object):
         if class_name.startswith("list["):
             self.typing_import.append("List")
 
-            sub_class_name = re.match(r"list\[(.*)\]", class_name).group(1)
+            sub_class_name = re.match(r"list\[(.*)\]", class_name).group(1)  # type: ignore
 
-            typ = self.get_type(sub_class_name)
+            typ: str = self.get_type(sub_class_name)
 
             return "List[{}]".format(typ)
 
         if class_name.startswith("dict("):
             self.typing_import.append("Dict")
 
-            key_name = re.match(r"dict\(([^,]*), (.*)\)", class_name).group(1)
-            sub_class_name = re.match(r"dict\(([^,]*), (.*)\)", class_name).group(2)
+            key_name = re.match(r"dict\(([^,]*), (.*)\)", class_name).group(1)  # type: ignore
+            sub_class_name = re.match(r"dict\(([^,]*), (.*)\)", class_name).group(2)  # type: ignore
 
             key = self.get_type(key_name)
             typ = self.get_type(sub_class_name)
@@ -64,20 +65,28 @@ class Attribute(object):
             module = klass.__module__
 
             if module == "builtins":
-                return klass.__qualname__
+                typ = klass.__qualname__
+                return typ
             else:
                 self.direct_import.append(module)
-                return module + "." + klass.__qualname__
+                typ = module + "." + klass.__qualname__
+                return typ
 
         klass = getattr(kubernetes_client, class_name, None)
 
         if klass is None:
             raise Exception("Attribute with missing model: {}".format(class_name))
         else:
-            klass = "{}Dict".format(klass.__qualname__)
-            self.model_import.append(klass)
+            typ = "{}Dict".format(klass.__qualname__)
+            self.model_import.append(typ)
 
-            return klass
+            # recursive types not supported https://github.com/python/mypy/issues/731
+            if typ == self.model_name:
+                self.typing_import.append("Any")
+                self.typing_import.append("Dict")
+                typ = "Dict[Any, Any]"
+
+            return typ
 
 
 class Model(object):
@@ -102,7 +111,7 @@ class Model(object):
         self.attributes: List[Attribute] = []
 
         for name, typ in oapi.items():
-            self.attributes.append(Attribute(attrs[name], typ))
+            self.attributes.append(Attribute(attrs[name], typ, self.name))
 
         self.direct_import = self.uniq_imports("direct_import")
         self.typing_import = self.uniq_imports("typing_import")

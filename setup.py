@@ -22,6 +22,7 @@ tests_require = [
     "flake8",
     "flake8-black",
     "flake8-isort",
+    "jinja2",
     "pytest",
     "tox",
     "tox-gh-actions",

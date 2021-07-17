@@ -3,14 +3,14 @@
 {{ "import " }}{{ imp }}{{ "\n" -}}
 {% endfor -%}
 {% endif -%}
-
-from typing import TypedDict{% if model.typing_import %}{{ ", " }}{{ model.typing_import | join(", ") }}{% endif %}{{ "\n" }}
-
+from typing import TypedDict{% if model.typing_import %}{{ ", " }}{{ model.typing_import | join(", ") }}{% endif %}{{ "\n" -}}
 {% if model.model_import -%}
+{{ "\n" -}}
 {{ "from kubernetes_typed.client import " }}{{ model.model_import | join(", ") }}{{ "\n" }}
 {% endif -%}
 
 {# Using alternative pep-0589 syntzx to allow reserved keywords as keys -#}
+{% filter indent(0, True) -%}
 {{ model.name }} = TypedDict(
 {% filter indent(4, True) -%}
     "{{ model.name }}",
@@ -27,3 +27,4 @@ total=False,
 {% endif -%}
 {% endfilter -%}
 )
+{% endfilter -%}

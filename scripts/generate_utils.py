@@ -3,10 +3,29 @@ import shutil
 from pathlib import Path
 from typing import Union
 
+from black import WriteBack, format_file_in_place
+from black.mode import Mode
 from git import RemoteProgress, Repo
 from mypy.stubgen import generate_stubs, parse_options
 
 PROJECT_DIRECTORY = Path(__file__).parent.parent
+
+
+def format(dst_dir: Union[str, Path], line_length: int):
+    """
+    Format target files using black
+    """
+
+    mode = Mode(
+        line_length=line_length,
+    )
+
+    if isinstance(dst_dir, Path):
+        dst_dir = dst_dir.absolute().as_posix()
+
+    for dirpath, _, filenames in os.walk(dst_dir):
+        for fn in filenames:
+            format_file_in_place(Path(dirpath, fn), True, mode, WriteBack.YES)
 
 
 def comment_codegen(dst_dir: Union[str, Path], name: str):

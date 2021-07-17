@@ -4,13 +4,11 @@ import inspect
 import os
 import re
 import shutil
-from collections import OrderedDict
 from pathlib import Path
-from typing import Dict, List
+from typing import List
 
-import kubernetes
 import kubernetes.client as kubernetes_client
-from jinja2 import Environment, FileSystemLoader, Template
+from jinja2 import Environment, FileSystemLoader
 
 from kubernetes_typed.plugin import (
     ATTRIBUTE_NAME_ATTRIBUTE,
@@ -18,7 +16,7 @@ from kubernetes_typed.plugin import (
     NATIVE_TYPES_MAPPING,
     OPENAPI_ATTRIBUTE,
 )
-from scripts.generate_utils import PROJECT_DIRECTORY, comment_codegen
+from scripts.generate_utils import PROJECT_DIRECTORY, comment_codegen, format
 
 DICT_CLIENT_TEMPLATE_DIRECTORY = PROJECT_DIRECTORY / "scripts" / "templates" / "typeddict"
 DICT_CLIENT_DIRECTORY = PROJECT_DIRECTORY / "kubernetes_typed" / "client"
@@ -180,6 +178,7 @@ def generate_dicts(client_dir: Path, models_dir: Path) -> None:
             file.write(klass_definition)
 
     comment_codegen(client_dir, "typeddictgen")
+    format(client_dir, 180)
 
 
 if __name__ == "__main__":

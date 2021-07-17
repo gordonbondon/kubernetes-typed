@@ -2,7 +2,6 @@
 
 import shutil
 from argparse import ArgumentParser
-from pathlib import Path
 
 from scripts.generate_utils import PROJECT_DIRECTORY, clone_and_generate
 

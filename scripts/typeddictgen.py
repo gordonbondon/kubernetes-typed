@@ -168,7 +168,8 @@ def generate_dicts(client_dir: Path, models_dir: Path) -> None:
 
     init_definition = template.render(models=models)
 
-    shutil.rmtree(client_dir)
+    if client_dir.exists():
+        shutil.rmtree(client_dir)
 
     os.makedirs(client_dir)
     with open(client_dir / "__init__.py", "w+") as file:

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import inspect
+import os
 import re
+import shutil
 from collections import OrderedDict
 from pathlib import Path
 from typing import Dict, List
@@ -159,9 +161,13 @@ def generate_dicts(client_dir: Path, models_dir: Path) -> None:
 
     init_definition = template.render(models=models)
 
+    shutil.rmtree(client_dir)
+
+    os.makedirs(client_dir)
     with open(client_dir / "__init__.py", "w+") as file:
         file.write(init_definition)
 
+    os.makedirs(models_dir)
     with open(models_dir / "__init__.py", "w+") as file:
         file.write(init_definition)
 

@@ -17,19 +17,19 @@ DICT_TMP_CLIENT_DIRECTORY = PROJECT_DIRECTORY / "tmp" / "client"
 DICT_TMP_CLIENT_MODELS_DIRECTORY = DICT_TMP_CLIENT_DIRECTORY / "models"
 
 
-def diff(src: str, dst: str) -> bool:
+def diff(src: str, dst: str) -> str:
     result = subprocess.run(
         [
             "git",
             "diff",
             "--no-index",
-            STUBS_TMP_CLIENT_MODULE_DIRECTORY,
-            STUBS_CLIENT_MODULE_DIRECTORY,
+            src,
+            dst,
         ],
         stdout=subprocess.PIPE,
     )
 
-    return result.stdout.decode("utf-8") == ""
+    return result.stdout.decode("utf-8")
 
 
 @pytest.mark.stubtest
@@ -41,11 +41,11 @@ def test_generated_stubs():
         DEFAULT_BRANCH,
     )
 
-    assert not diff(STUBS_TMP_CLIENT_MODULE_DIRECTORY, STUBS_CLIENT_MODULE_DIRECTORY)
+    assert diff(STUBS_TMP_CLIENT_MODULE_DIRECTORY, STUBS_CLIENT_MODULE_DIRECTORY) == ""
 
 
 @pytest.mark.stubtest
 def test_generated_dicts():
     generate_dicts(DICT_TMP_CLIENT_DIRECTORY, DICT_TMP_CLIENT_MODELS_DIRECTORY)
 
-    assert not diff(DICT_TMP_CLIENT_DIRECTORY, DICT_CLIENT_DIRECTORY)
+    assert diff(DICT_TMP_CLIENT_DIRECTORY, DICT_CLIENT_DIRECTORY) == ""

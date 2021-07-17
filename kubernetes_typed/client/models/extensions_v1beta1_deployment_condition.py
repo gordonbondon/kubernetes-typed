@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 ExtensionsV1beta1DeploymentConditionDict = TypedDict(
     "ExtensionsV1beta1DeploymentConditionDict",
     {

@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 V1ContainerStateTerminatedDict = TypedDict(
     "V1ContainerStateTerminatedDict",
     {

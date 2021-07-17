@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 V1JobConditionDict = TypedDict(
     "V1JobConditionDict",
     {

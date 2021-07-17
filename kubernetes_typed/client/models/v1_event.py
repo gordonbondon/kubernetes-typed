@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 from kubernetes_typed.client import V1EventSeriesDict, V1EventSourceDict, V1ObjectMetaDict, V1ObjectReferenceDict
 
 V1EventDict = TypedDict(

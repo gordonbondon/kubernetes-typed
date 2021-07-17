@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 V2beta2HorizontalPodAutoscalerConditionDict = TypedDict(
     "V2beta2HorizontalPodAutoscalerConditionDict",
     {

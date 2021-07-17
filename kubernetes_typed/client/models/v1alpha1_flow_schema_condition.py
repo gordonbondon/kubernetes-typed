@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 V1alpha1FlowSchemaConditionDict = TypedDict(
     "V1alpha1FlowSchemaConditionDict",
     {

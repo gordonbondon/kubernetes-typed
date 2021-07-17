@@ -1345,5 +1345,4 @@ __all__ = [
     "V2beta2ResourceMetricSourceDict",
     "V2beta2ResourceMetricStatusDict",
     "VersionInfoDict",
-    
 ]

@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict, Dict, List
 
-
 from kubernetes_typed.client import V1ManagedFieldsEntryDict, V1OwnerReferenceDict
 
 V1ObjectMetaDict = TypedDict(

@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict, List
 
-
 from kubernetes_typed.client import V2beta1HorizontalPodAutoscalerConditionDict, V2beta1MetricStatusDict
 
 V2beta1HorizontalPodAutoscalerStatusDict = TypedDict(

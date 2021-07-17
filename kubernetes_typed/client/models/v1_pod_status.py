@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict, List
 
-
 from kubernetes_typed.client import V1ContainerStatusDict, V1PodConditionDict, V1PodIPDict
 
 V1PodStatusDict = TypedDict(

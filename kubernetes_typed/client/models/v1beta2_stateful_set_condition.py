@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 V1beta2StatefulSetConditionDict = TypedDict(
     "V1beta2StatefulSetConditionDict",
     {

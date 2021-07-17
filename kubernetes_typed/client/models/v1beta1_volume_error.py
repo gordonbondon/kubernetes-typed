@@ -2,7 +2,6 @@
 import datetime
 from typing import TypedDict
 
-
 V1beta1VolumeErrorDict = TypedDict(
     "V1beta1VolumeErrorDict",
     {

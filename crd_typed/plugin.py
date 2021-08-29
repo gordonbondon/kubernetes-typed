@@ -2,8 +2,8 @@ from typing import Any, Callable, Dict, List, Optional, Tuple, cast
 
 import yaml
 from jsonschema_typed.plugin import APIv4, TypeMaker
-from mypy.nodes import MypyFile
-from mypy.plugin import AnalyzeTypeContext, Plugin
+from mypy.nodes import GDEF, MypyFile, SymbolTableNode
+from mypy.plugin import AnalyzeTypeContext, DynamicClassDefContext, Plugin
 from mypy.types import AnyType, RawExpressionType, Type, TypeOfAny, UnboundType
 
 
@@ -11,6 +11,11 @@ class CRDPlugin(Plugin):
     """Provides support for the CRD specs as TypedDict."""
 
     CustomResource = "crd_typed.CustomResource"
+
+    def get_dynamic_class_hook(self, fullname: str) -> Optional[Callable[[DynamicClassDefContext], None]]:
+        if fullname == self.CustomResource:
+            return custom_resource_dict_callback
+        return None
 
     def get_type_analyze_hook(self, fullname: str) -> Optional[Callable[[AnalyzeTypeContext], Type]]:
         if fullname == self.CustomResource:
@@ -21,6 +26,18 @@ class CRDPlugin(Plugin):
     def get_additional_deps(self, file: MypyFile) -> List[Tuple[int, str, int]]:
         """Add ``mypy_extensions`` as a dependency."""
         return [(10, "mypy_extensions", -1)]
+
+
+def custom_resource_dict_callback(ctx: DynamicClassDefContext) -> None:
+    pass
+
+    # api = APIv4()
+
+    # create our own AnalyzeTypeContext from DynamicClassDefContext and pass to TypeMaker
+
+    # use resulting type to create TypeInfo.typeddict_type and pass it to table
+
+    # ctx.api.add_symbol_table_node(ctx.name, SymbolTableNode(GDEF, info))
 
 
 def custom_resource_callback(ctx: AnalyzeTypeContext) -> Type:

@@ -26,6 +26,7 @@ tests_require = [
     "pytest",
     "tox",
     "tox-gh-actions",
+    "wemake-python-styleguide",
 ]
 
 setup(

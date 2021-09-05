@@ -13,6 +13,13 @@ Then install the dev requirements:
 pip install -r ./requirements-dev.txt
 ```
 
+## Testing
+
+Run tests with `tox`:
+```
+tox -epy38
+```
+
 ## Updating kubernetes-client version
 
 1. Update `DEFAULT_BRANCH` in [`scripts/stubgen.py`](./scripts/stubgen.py)
@@ -27,7 +34,6 @@ To regenerate stubs run:
 ```
 python ./scripts/stubgen.py
 ```
-
 
 ## Generating model dicts
 

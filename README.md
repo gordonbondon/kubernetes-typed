@@ -37,7 +37,7 @@ plugins = crd_typed.plugin
 
 2. Import `CustomResource`
 
-```
+```python
 from crd_type import CustomResource
 ```
 
@@ -93,7 +93,7 @@ This package provides basic [type stubs](https://www.python.org/dev/peps/pep-056
 
 To enable full type checking for classes use provided `kubernetes_typed` plugin. This plugin requires `kubernetes`, you can require it during installation like this:
 
-```
+```shell
 pip install kubernetes-typed[client]
 ```
 

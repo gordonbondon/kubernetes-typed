@@ -1,18 +1,21 @@
+"""kubernetes-typed."""
 import os
+from typing import List
 
 from setuptools import setup
 
 
-def find_stub_files(name):
-    result = []
-    for root, dirs, files in os.walk(name):
-        for file in files:
-            if file.endswith(".pyi"):
+def find_stub_files(name: str) -> List[str]:
+    """Find all files for stubs."""
+    stubs = []
+    for root, _, files in os.walk(name):
+        for stub_file in files:
+            if stub_file.endswith(".pyi"):
                 if os.path.sep in root:
                     sub_root = root.split(os.path.sep, 1)[-1]
-                    file = os.path.join(sub_root, file)
-                result.append(file)
-    return result
+                    stub_file = os.path.join(sub_root, stub_file)
+                stubs.append(stub_file)
+    return stubs
 
 
 tests_require = [

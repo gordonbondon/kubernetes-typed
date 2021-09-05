@@ -62,12 +62,12 @@ class Attribute(object):
 
             return "Dict[{0}, {1}]".format(key, typ)
 
-        if NATIVE_TYPES_MAPPING[class_name]:
+        if NATIVE_TYPES_MAPPING.get(class_name) is not None:
             klass = NATIVE_TYPES_MAPPING[class_name]
             module = klass.__module__
 
             if module == "builtins":
-                return klass.__qualname__
+                return "{0}".format(klass.__qualname__)
 
             self.direct_import.append(module)
             return "{0}.{1}".format(module, klass.__qualname__)

@@ -109,10 +109,9 @@ def get_attribute_type(api: TypeChecker, name: str) -> Optional[Instance]:
     if name.find("(") != -1 or name.find("[") != -1:
         return get_generic_type(api, name)
 
-    if NATIVE_TYPES_MAPPING[name]:
-        klass = NATIVE_TYPES_MAPPING[name]
-
-        return api.named_type("{0}.{1}".format(klass.__module__, klass.__qualname__))
+    native = NATIVE_TYPES_MAPPING.get(name)
+    if native is not None:
+        return api.named_type("{0}.{1}".format(native.__module__, native.__qualname__))
 
     try:
         klass = getattr(kubernetes_client, name, None)
@@ -180,7 +179,11 @@ def get_model_openapi_type_name(class_name: str, attr_name: str) -> Optional[str
 
     oapi = getattr(klass, OPENAPI_ATTRIBUTE)
 
-    return oapi.get(attr_name)
+    name: str = oapi.get(attr_name)
+    if name is not None:
+        return name
+
+    return None
 
 
 def plugin(_version: str) -> Any:

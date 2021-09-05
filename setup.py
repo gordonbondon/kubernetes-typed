@@ -5,7 +5,7 @@ from typing import List
 
 from setuptools import find_packages, setup
 
-PACKAGE_VERSION = "18.20.0-snapshot"
+PACKAGE_VERSION = "18.20.0-dev"
 
 
 def find_stub_files(name: str) -> List[str]:
@@ -80,7 +80,7 @@ setup(
     ],
     extras_require={"dev": tests_require, "client": ["kubernetes"]},
     tests_require=tests_require,
-    project_urls={
+    project_urls={  # Optional
         "Bug Reports": "https://github.com/gordonbondon/kubernetes-typed/issues",
         "Source": "https://github.com/gordonbondon/kubernetes-typed",
     },

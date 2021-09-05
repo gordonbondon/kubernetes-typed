@@ -13,6 +13,11 @@ Then install the dev requirements:
 pip install -r ./requirements-dev.txt
 ```
 
+## Updating kubernetes-client version
+
+1. Update `DEFAULT_BRANCH` in [`scripts/stubgen.py`](./scripts/stubgen.py)
+2. Update [`requirements-test.txt`](./requirements-test.txt) version pin and `pip install` it.
+3. Regenerate stubs and model dicts
 
 ## Generating stubs
 

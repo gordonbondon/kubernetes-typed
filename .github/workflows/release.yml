@@ -18,7 +18,7 @@ jobs:
         run: pip install -U setuptools wheel build
       - name: Set package version
         run: |
-          VERSION="${GITHUB_REF#refs/*/}""
+          VERSION="${GITHUB_REF#refs/*/}"
           sed -i"" -e "s/^PACKAGE_VERSION = .*/PACKAGE_VERSION = \"${VERSION}\"/g" ./setup.py
       - name: Build
         run: python -m build .

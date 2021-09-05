@@ -1,8 +1,11 @@
 """kubernetes-typed."""
 import os
+import pathlib
 from typing import List
 
-from setuptools import setup
+from setuptools import find_packages, setup
+
+PACKAGE_VERSION = "18.20.0-snapshot"
 
 
 def find_stub_files(name: str) -> List[str]:
@@ -17,6 +20,9 @@ def find_stub_files(name: str) -> List[str]:
                 stubs.append(stub_file)
     return stubs
 
+
+here = pathlib.Path(__file__).parent.resolve()
+long_description = (here / "README.md").read_text(encoding="utf-8")
 
 tests_require = [
     "black",
@@ -34,15 +40,48 @@ tests_require = [
 
 setup(
     name="kubernetes-typed",
-    packages=["crd_typed", "kubernetes_typed", "kubernetes-stubs"],
-    package_data={"kubernetes-stubs": find_stub_files("kubernetes-stubs")},
+    version=PACKAGE_VERSION,
+    description="Collection of mypy plugins and stubs for kubernetes",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    author="Artem Yarmoliuk",
+    license="Apache License Version 2.0",
+    url="https://github.com/gordonbondon/kubernetes-typed",
+    keywords=["Kubernetes", "MyPy", "Stubs", "Typing"],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Environment :: Console",
+        "Environment :: Plugins",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Software Development",
+        "Typing :: Typed",
+    ],
+    packages=[
+        "kubernetes-stubs",
+        *find_packages(exclude=["kubernetes-python-source", "scripts", "stubgen", "tests", "tmp"]),
+    ],
+    package_data={
+        "crd_typed": ["py.typed"],
+        "kubernetes_typed": ["py.typed"],
+        "kubernetes-stubs": find_stub_files("kubernetes-stubs"),
+    },
+    python_requires=">=3.8",
     install_requires=[
         "jsonschema-typed-v2",
-        "kubernetes",  # required by PEP 561
         "mypy>=0.800, <=0.910",
         "mypy-extensions",
         "PyYAML",
     ],
-    extras_require={"dev": tests_require},
+    extras_require={"dev": tests_require, "client": ["kubernetes"]},
     tests_require=tests_require,
+    project_urls={
+        "Bug Reports": "https://github.com/gordonbondon/kubernetes-typed/issues",
+        "Source": "https://github.com/gordonbondon/kubernetes-typed",
+    },
 )

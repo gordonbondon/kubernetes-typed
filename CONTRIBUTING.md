@@ -28,7 +28,6 @@ To regenerate stubs run:
 python ./scripts/stubgen.py
 ```
 
-
 ## Generating model dicts
 
 Do this:

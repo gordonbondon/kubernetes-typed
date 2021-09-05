@@ -52,3 +52,5 @@ stubgen/
 kubernetes-stubs/kubernetes/
 kubernetes-python-source/
 tmp/
+dist/
+setup.py-e

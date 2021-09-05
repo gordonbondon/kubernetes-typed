@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.x"
+      - name: Install build dependencies
+        run: pip install -U setuptools wheel build
+      - name: Set package version
+        run: |
+          VERSION="${GITHUB_REF#refs/*/}""
+          sed -i"" -e "s/^PACKAGE_VERSION = .*/PACKAGE_VERSION = \"${VERSION}\"/g" ./setup.py
+      - name: Build
+        run: python -m build .
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip_existing: true

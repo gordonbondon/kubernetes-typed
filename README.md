@@ -14,10 +14,15 @@ mypy plugin to dynamically define types for Kubernetes objects.
 
 ## Installation
 
-Install with `pip` from source:
+Install with `pip`:
 ```shell
-pip install -e git+https://github.com/gordonbondon/kubernetes-typed.get#egg=kubernetes-typed
+pip install kubernetes-typed
 ```
+
+### Versioning
+
+This package follows `kubernetes` client [versioning approach](https://github.com/kubernetes-client/python#homogenizing-the-kubernetes-python-client-versions).
+`MAJOR.MINOR` parts of version will match client version for which stubs were generated, and `PATCH` version will be stub or plugin specific updates.
 
 ## Custom Resource Definitions
 
@@ -86,7 +91,13 @@ You can get type definition for different parts of crd:
 
 This package provides basic [type stubs](https://www.python.org/dev/peps/pep-0561/) for [kubernetes python client](https://github.com/kubernetes-client/python) out of the box.
 
-To enable full type checking for classes use provided `kubernetes_typed` plugin. Configure `mypy` to use it and it will automatically type check classes from `kubernetes.client`:
+To enable full type checking for classes use provided `kubernetes_typed` plugin. This plugin requires `kubernetes`, you can require it during installation like this:
+
+```
+pip install kubernetes-typed[client]
+```
+
+Configure `mypy` to use it and it will automatically type check classes from `kubernetes.client`:
 
 ```ini
 [mypy]

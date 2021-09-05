@@ -1,7 +1,9 @@
+"""plugin implements mypy plugin."""
 from functools import partial
-from typing import Any, Callable, Dict, List, Optional, Tuple
+from types import MappingProxyType
+from typing import Any, Callable, List, Optional, Tuple
 
-import kubernetes.client as kubernetes_client
+from kubernetes import client as kubernetes_client
 from mypy.checker import TypeChecker
 from mypy.nodes import MypyFile, TypeAlias, TypeInfo
 from mypy.plugin import AttributeContext, CallableType, FunctionSigContext, Plugin
@@ -14,11 +16,21 @@ OPENAPI_ATTRIBUTE = "openapi_types"
 ATTRIBUTE_NAME_ATTRIBUTE = "attribute_map"
 NATIVE_TYPES_MAPPING = kubernetes_client.ApiClient.NATIVE_TYPES_MAPPING
 
+BRACKET_SQUARE = "["
+BRACKET_ROUND = "("
+BRACKET_CLOSING = MappingProxyType(
+    {
+        BRACKET_SQUARE: "]",
+        BRACKET_ROUND: ")",
+    },
+)
+
 
 class KubernetesPlugin(Plugin):
     """Provides support for Kubernetes client types."""
 
     def get_attribute_hook(self, fullname: str) -> Optional[Callable[[AttributeContext], MypyType]]:
+        """Get attribute hook callback."""
         if fullname.startswith(KUBERNETES_CLIENT_PREFIX):
             class_path, _, attr_name = fullname.rpartition(".")
 
@@ -33,6 +45,7 @@ class KubernetesPlugin(Plugin):
         return None
 
     def get_function_signature_hook(self, fullname: str) -> Optional[Callable[[FunctionSigContext], CallableType]]:
+        """Get function hook callback."""
         if fullname.startswith(KUBERNETES_CLIENT_PREFIX):
             return function_signature_callback
 
@@ -44,22 +57,23 @@ class KubernetesPlugin(Plugin):
 
 
 def function_signature_callback(ctx: FunctionSigContext) -> CallableType:
+    """Call Function callback."""
     assert isinstance(ctx.api, TypeChecker)
 
     signature = ctx.default_signature
 
     try:
-        new_arg_types: List[MypyType] = [UnionType([AnyType(TypeOfAny.implementation_artifact), NoneType()])] * len(
-            signature.arg_names
-        )
+        new_arg_types: List[MypyType] = [
+            UnionType([AnyType(TypeOfAny.implementation_artifact), NoneType()]) for _ in enumerate(signature.arg_names)
+        ]
 
-        for i in range(len(signature.arg_names)):
+        for i, _ in enumerate(signature.arg_names):
             arg_name = signature.arg_names[i]
 
             if arg_name is None:
                 continue
 
-            _, _, class_name = f"{signature.ret_type}".rpartition(".")
+            _, _, class_name = "{0}".format(signature.ret_type).rpartition(".")
 
             type_name = get_model_openapi_type_name(class_name, arg_name)
 
@@ -79,6 +93,7 @@ def function_signature_callback(ctx: FunctionSigContext) -> CallableType:
 
 
 def attribute_callback(ctx: AttributeContext, name: str) -> MypyType:
+    """Attribute callback."""
     assert isinstance(ctx.api, TypeChecker)
 
     typ = get_attribute_type(ctx.api, name)
@@ -90,15 +105,13 @@ def attribute_callback(ctx: AttributeContext, name: str) -> MypyType:
 
 
 def get_attribute_type(api: TypeChecker, name: str) -> Optional[Instance]:
+    """Get type definition of an attribute."""
     if name.find("(") != -1 or name.find("[") != -1:
         return get_generic_type(api, name)
 
-    try:
-        klass = NATIVE_TYPES_MAPPING[name]
-
-        return api.named_type("{}.{}".format(klass.__module__, klass.__qualname__))
-    except KeyError:
-        pass
+    native = NATIVE_TYPES_MAPPING.get(name)
+    if native is not None:
+        return api.named_type("{0}.{1}".format(native.__module__, native.__qualname__))
 
     try:
         klass = getattr(kubernetes_client, name, None)
@@ -106,50 +119,46 @@ def get_attribute_type(api: TypeChecker, name: str) -> Optional[Instance]:
         if klass is None:
             return None
 
-        # ref: mypy.checker.lookup_qualified
+        # From mypy.checker.lookup_qualified
         n = api.modules[klass.__module__]
         sym = n.names[klass.__qualname__]
 
-        # ref: mypy.checker.named_type
+        # From mypy.checker.named_type
         node = sym.node
         if isinstance(node, TypeAlias):
             assert isinstance(node.target, Instance)
             node = node.target.type
         assert isinstance(node, TypeInfo)
         any_type = AnyType(TypeOfAny.from_omitted_generics)
-        return Instance(node, [any_type] * len(node.defn.type_vars))
+        return Instance(node, [any_type for _ in enumerate(node.defn.type_vars)])
     except KeyError:
-        pass
-
-    return None
+        return None
 
 
 def get_generic_type(api: TypeChecker, name: str) -> Optional[Instance]:
-    """Parse generic type definition from type hint string
+    """Parse generic type definition from type hint string.
 
     For example list[str], dict(str, str), etc.
     """
-
     # TODO: pretty sure this is implemented somewhere inside mypy, byt I was not able to find it
     start: str = ""
-    close: Dict[str, str] = {"(": ")", "[": "]"}
 
-    square = name.find("[")
-    paren = name.find("(")
+    square = name.find(BRACKET_SQUARE)
+    paren = name.find(BRACKET_ROUND)
 
     if square != -1 and paren != -1:
         if square < paren:
-            start = "["
+            start = BRACKET_SQUARE
         elif paren < square:
-            start = "("
+            start = BRACKET_ROUND
     elif square != -1:
-        start = "["
+        start = BRACKET_SQUARE
     elif paren != -1:
-        start = "("
+        start = BRACKET_ROUND
 
     type_name = name.split(start)[0]
 
-    args = name[name.find(start) + 1 : name.rfind(close[start])].split(",")
+    args = name[name.find(start) + 1 : name.rfind(BRACKET_CLOSING[start])].split(",")
 
     type_args: List[MypyType] = []
 
@@ -162,6 +171,7 @@ def get_generic_type(api: TypeChecker, name: str) -> Optional[Instance]:
 
 
 def get_model_openapi_type_name(class_name: str, attr_name: str) -> Optional[str]:
+    """Get attribute type from openapi definition."""
     klass = getattr(kubernetes_client, class_name, None)
 
     if klass is None:
@@ -170,9 +180,12 @@ def get_model_openapi_type_name(class_name: str, attr_name: str) -> Optional[str
     oapi = getattr(klass, OPENAPI_ATTRIBUTE)
 
     name: str = oapi.get(attr_name)
+    if name is not None:
+        return name
 
-    return name
+    return None
 
 
 def plugin(_version: str) -> Any:
+    """Get mypy Kubernetes plugin."""
     return KubernetesPlugin

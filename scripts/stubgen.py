@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Generating mypy stubs."""
 
 import shutil
 from argparse import ArgumentParser

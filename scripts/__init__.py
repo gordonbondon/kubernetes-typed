@@ -1,0 +1,1 @@
+"""kubernetes-typed generating scripts."""

@@ -6,7 +6,7 @@ from argparse import ArgumentParser
 
 from scripts.generate_utils import PROJECT_DIRECTORY, clone_and_generate
 
-DEFAULT_BRANCH = "release-17.0"
+DEFAULT_BRANCH = "release-18.0"
 
 K8S_SOURCE_DIRECTORY = PROJECT_DIRECTORY / "kubernetes-python-source"
 K8S_CLIENT_MODULE_DIRECTORY = K8S_SOURCE_DIRECTORY / "kubernetes"
@@ -20,6 +20,9 @@ if __name__ == "__main__":
     parser.add_argument("--commit_sha", required=False)
 
     args = parser.parse_args()
+
+    if STUBS_TMP_DIRECTORY.exists():
+        shutil.rmtree(STUBS_TMP_DIRECTORY)
 
     clone_and_generate(
         K8S_SOURCE_DIRECTORY,

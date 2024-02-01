@@ -2,7 +2,7 @@
 """V1DaemonSetStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1DaemonSetConditionDict
+from .v1_daemon_set_condition import V1DaemonSetConditionDict
 
 V1DaemonSetStatusDict = TypedDict(
     "V1DaemonSetStatusDict",

@@ -2,7 +2,8 @@
 """V1StatefulSetListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1StatefulSetDict
+from .v1_list_meta import V1ListMetaDict
+from .v1_stateful_set import V1StatefulSetDict
 
 V1StatefulSetListDict = TypedDict(
     "V1StatefulSetListDict",

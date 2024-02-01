@@ -2,7 +2,7 @@
 """NetworkingV1beta1IngressRuleDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import NetworkingV1beta1HTTPIngressRuleValueDict
+from .networking_v1beta1_http_ingress_rule_value import NetworkingV1beta1HTTPIngressRuleValueDict
 
 NetworkingV1beta1IngressRuleDict = TypedDict(
     "NetworkingV1beta1IngressRuleDict",

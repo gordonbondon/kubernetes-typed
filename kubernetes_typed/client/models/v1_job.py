@@ -2,7 +2,9 @@
 """V1JobDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1JobSpecDict, V1JobStatusDict, V1ObjectMetaDict
+from .v1_job_spec import V1JobSpecDict
+from .v1_job_status import V1JobStatusDict
+from .v1_object_meta import V1ObjectMetaDict
 
 V1JobDict = TypedDict(
     "V1JobDict",

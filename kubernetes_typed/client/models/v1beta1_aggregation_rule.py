@@ -2,7 +2,7 @@
 """V1beta1AggregationRuleDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1LabelSelectorDict
+from .v1_label_selector import V1LabelSelectorDict
 
 V1beta1AggregationRuleDict = TypedDict(
     "V1beta1AggregationRuleDict",

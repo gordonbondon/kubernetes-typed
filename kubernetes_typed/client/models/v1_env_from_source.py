@@ -2,7 +2,8 @@
 """V1EnvFromSourceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ConfigMapEnvSourceDict, V1SecretEnvSourceDict
+from .v1_config_map_env_source import V1ConfigMapEnvSourceDict
+from .v1_secret_env_source import V1SecretEnvSourceDict
 
 V1EnvFromSourceDict = TypedDict(
     "V1EnvFromSourceDict",

@@ -2,7 +2,8 @@
 """V1alpha1FlowSchemaListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1alpha1FlowSchemaDict
+from .v1_list_meta import V1ListMetaDict
+from .v1alpha1_flow_schema import V1alpha1FlowSchemaDict
 
 V1alpha1FlowSchemaListDict = TypedDict(
     "V1alpha1FlowSchemaListDict",

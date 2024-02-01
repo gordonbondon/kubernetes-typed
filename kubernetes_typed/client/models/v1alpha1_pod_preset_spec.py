@@ -2,7 +2,11 @@
 """V1alpha1PodPresetSpecDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1EnvFromSourceDict, V1EnvVarDict, V1LabelSelectorDict, V1VolumeDict, V1VolumeMountDict
+from .v1_env_from_source import V1EnvFromSourceDict
+from .v1_env_var import V1EnvVarDict
+from .v1_label_selector import V1LabelSelectorDict
+from .v1_volume import V1VolumeDict
+from .v1_volume_mount import V1VolumeMountDict
 
 V1alpha1PodPresetSpecDict = TypedDict(
     "V1alpha1PodPresetSpecDict",

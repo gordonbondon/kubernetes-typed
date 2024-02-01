@@ -2,7 +2,7 @@
 """V1ProjectedVolumeSourceDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1VolumeProjectionDict
+from .v1_volume_projection import V1VolumeProjectionDict
 
 V1ProjectedVolumeSourceDict = TypedDict(
     "V1ProjectedVolumeSourceDict",

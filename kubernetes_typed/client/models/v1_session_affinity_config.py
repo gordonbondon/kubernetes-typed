@@ -2,7 +2,7 @@
 """V1SessionAffinityConfigDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ClientIPConfigDict
+from .v1_client_ip_config import V1ClientIPConfigDict
 
 V1SessionAffinityConfigDict = TypedDict(
     "V1SessionAffinityConfigDict",

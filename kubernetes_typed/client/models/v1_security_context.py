@@ -2,7 +2,9 @@
 """V1SecurityContextDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1CapabilitiesDict, V1SELinuxOptionsDict, V1WindowsSecurityContextOptionsDict
+from .v1_capabilities import V1CapabilitiesDict
+from .v1_se_linux_options import V1SELinuxOptionsDict
+from .v1_windows_security_context_options import V1WindowsSecurityContextOptionsDict
 
 V1SecurityContextDict = TypedDict(
     "V1SecurityContextDict",

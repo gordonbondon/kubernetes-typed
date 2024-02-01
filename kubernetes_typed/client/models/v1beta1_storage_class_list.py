@@ -2,7 +2,8 @@
 """V1beta1StorageClassListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1beta1StorageClassDict
+from .v1_list_meta import V1ListMetaDict
+from .v1beta1_storage_class import V1beta1StorageClassDict
 
 V1beta1StorageClassListDict = TypedDict(
     "V1beta1StorageClassListDict",

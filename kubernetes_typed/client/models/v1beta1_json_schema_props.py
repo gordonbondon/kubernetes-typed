@@ -2,7 +2,7 @@
 """V1beta1JSONSchemaPropsDict generated type."""
 from typing import TypedDict, Any, Dict, List
 
-from kubernetes_typed.client import V1beta1ExternalDocumentationDict
+from .v1beta1_external_documentation import V1beta1ExternalDocumentationDict
 
 V1beta1JSONSchemaPropsDict = TypedDict(
     "V1beta1JSONSchemaPropsDict",

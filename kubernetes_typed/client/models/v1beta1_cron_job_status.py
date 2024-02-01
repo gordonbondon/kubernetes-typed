@@ -3,7 +3,7 @@
 import datetime
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ObjectReferenceDict
+from .v1_object_reference import V1ObjectReferenceDict
 
 V1beta1CronJobStatusDict = TypedDict(
     "V1beta1CronJobStatusDict",

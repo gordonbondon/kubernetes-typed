@@ -2,7 +2,9 @@
 """NetworkingV1beta1IngressDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import NetworkingV1beta1IngressSpecDict, NetworkingV1beta1IngressStatusDict, V1ObjectMetaDict
+from .networking_v1beta1_ingress_spec import NetworkingV1beta1IngressSpecDict
+from .networking_v1beta1_ingress_status import NetworkingV1beta1IngressStatusDict
+from .v1_object_meta import V1ObjectMetaDict
 
 NetworkingV1beta1IngressDict = TypedDict(
     "NetworkingV1beta1IngressDict",

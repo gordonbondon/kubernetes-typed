@@ -2,7 +2,8 @@
 """V1PriorityClassListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1PriorityClassDict
+from .v1_list_meta import V1ListMetaDict
+from .v1_priority_class import V1PriorityClassDict
 
 V1PriorityClassListDict = TypedDict(
     "V1PriorityClassListDict",

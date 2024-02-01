@@ -2,17 +2,15 @@
 """V1EphemeralContainerDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import (
-    V1ContainerPortDict,
-    V1EnvFromSourceDict,
-    V1EnvVarDict,
-    V1LifecycleDict,
-    V1ProbeDict,
-    V1ResourceRequirementsDict,
-    V1SecurityContextDict,
-    V1VolumeDeviceDict,
-    V1VolumeMountDict,
-)
+from .v1_container_port import V1ContainerPortDict
+from .v1_env_from_source import V1EnvFromSourceDict
+from .v1_env_var import V1EnvVarDict
+from .v1_lifecycle import V1LifecycleDict
+from .v1_probe import V1ProbeDict
+from .v1_resource_requirements import V1ResourceRequirementsDict
+from .v1_security_context import V1SecurityContextDict
+from .v1_volume_device import V1VolumeDeviceDict
+from .v1_volume_mount import V1VolumeMountDict
 
 V1EphemeralContainerDict = TypedDict(
     "V1EphemeralContainerDict",

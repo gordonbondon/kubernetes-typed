@@ -2,7 +2,7 @@
 """V1RBDPersistentVolumeSourceDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1SecretReferenceDict
+from .v1_secret_reference import V1SecretReferenceDict
 
 V1RBDPersistentVolumeSourceDict = TypedDict(
     "V1RBDPersistentVolumeSourceDict",

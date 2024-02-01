@@ -2,7 +2,7 @@
 """V1PersistentVolumeClaimStatusDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import V1PersistentVolumeClaimConditionDict
+from .v1_persistent_volume_claim_condition import V1PersistentVolumeClaimConditionDict
 
 V1PersistentVolumeClaimStatusDict = TypedDict(
     "V1PersistentVolumeClaimStatusDict",

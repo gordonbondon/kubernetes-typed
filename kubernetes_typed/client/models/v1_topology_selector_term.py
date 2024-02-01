@@ -2,7 +2,7 @@
 """V1TopologySelectorTermDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1TopologySelectorLabelRequirementDict
+from .v1_topology_selector_label_requirement import V1TopologySelectorLabelRequirementDict
 
 V1TopologySelectorTermDict = TypedDict(
     "V1TopologySelectorTermDict",

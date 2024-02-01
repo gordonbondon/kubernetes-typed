@@ -2,19 +2,17 @@
 """V1PodSpecDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import (
-    V1AffinityDict,
-    V1ContainerDict,
-    V1EphemeralContainerDict,
-    V1HostAliasDict,
-    V1LocalObjectReferenceDict,
-    V1PodDNSConfigDict,
-    V1PodReadinessGateDict,
-    V1PodSecurityContextDict,
-    V1TolerationDict,
-    V1TopologySpreadConstraintDict,
-    V1VolumeDict,
-)
+from .v1_affinity import V1AffinityDict
+from .v1_container import V1ContainerDict
+from .v1_ephemeral_container import V1EphemeralContainerDict
+from .v1_host_alias import V1HostAliasDict
+from .v1_local_object_reference import V1LocalObjectReferenceDict
+from .v1_pod_dns_config import V1PodDNSConfigDict
+from .v1_pod_readiness_gate import V1PodReadinessGateDict
+from .v1_pod_security_context import V1PodSecurityContextDict
+from .v1_toleration import V1TolerationDict
+from .v1_topology_spread_constraint import V1TopologySpreadConstraintDict
+from .v1_volume import V1VolumeDict
 
 V1PodSpecDict = TypedDict(
     "V1PodSpecDict",

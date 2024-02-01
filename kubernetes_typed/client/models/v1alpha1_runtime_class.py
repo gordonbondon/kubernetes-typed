@@ -2,7 +2,8 @@
 """V1alpha1RuntimeClassDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1alpha1RuntimeClassSpecDict
+from .v1_object_meta import V1ObjectMetaDict
+from .v1alpha1_runtime_class_spec import V1alpha1RuntimeClassSpecDict
 
 V1alpha1RuntimeClassDict = TypedDict(
     "V1alpha1RuntimeClassDict",

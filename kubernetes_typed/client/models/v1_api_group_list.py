@@ -2,7 +2,7 @@
 """V1APIGroupListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1APIGroupDict
+from .v1_api_group import V1APIGroupDict
 
 V1APIGroupListDict = TypedDict(
     "V1APIGroupListDict",

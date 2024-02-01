@@ -2,7 +2,7 @@
 """V2beta2HorizontalPodAutoscalerBehaviorDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V2beta2HPAScalingRulesDict
+from .v2beta2_hpa_scaling_rules import V2beta2HPAScalingRulesDict
 
 V2beta2HorizontalPodAutoscalerBehaviorDict = TypedDict(
     "V2beta2HorizontalPodAutoscalerBehaviorDict",

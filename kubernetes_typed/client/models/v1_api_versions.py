@@ -2,7 +2,7 @@
 """V1APIVersionsDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ServerAddressByClientCIDRDict
+from .v1_server_address_by_client_cidr import V1ServerAddressByClientCIDRDict
 
 V1APIVersionsDict = TypedDict(
     "V1APIVersionsDict",

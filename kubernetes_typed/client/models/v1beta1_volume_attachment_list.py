@@ -2,7 +2,8 @@
 """V1beta1VolumeAttachmentListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1beta1VolumeAttachmentDict
+from .v1_list_meta import V1ListMetaDict
+from .v1beta1_volume_attachment import V1beta1VolumeAttachmentDict
 
 V1beta1VolumeAttachmentListDict = TypedDict(
     "V1beta1VolumeAttachmentListDict",

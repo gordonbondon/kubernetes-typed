@@ -2,7 +2,9 @@
 """V1ResourceQuotaDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1ResourceQuotaSpecDict, V1ResourceQuotaStatusDict
+from .v1_object_meta import V1ObjectMetaDict
+from .v1_resource_quota_spec import V1ResourceQuotaSpecDict
+from .v1_resource_quota_status import V1ResourceQuotaStatusDict
 
 V1ResourceQuotaDict = TypedDict(
     "V1ResourceQuotaDict",

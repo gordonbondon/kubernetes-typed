@@ -2,7 +2,7 @@
 """NetworkingV1beta1HTTPIngressPathDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import NetworkingV1beta1IngressBackendDict
+from .networking_v1beta1_ingress_backend import NetworkingV1beta1IngressBackendDict
 
 NetworkingV1beta1HTTPIngressPathDict = TypedDict(
     "NetworkingV1beta1HTTPIngressPathDict",

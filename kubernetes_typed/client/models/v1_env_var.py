@@ -2,7 +2,7 @@
 """V1EnvVarDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1EnvVarSourceDict
+from .v1_env_var_source import V1EnvVarSourceDict
 
 V1EnvVarDict = TypedDict(
     "V1EnvVarDict",

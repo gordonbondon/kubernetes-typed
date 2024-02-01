@@ -2,7 +2,7 @@
 """V1ConfigMapDict generated type."""
 from typing import TypedDict, Dict
 
-from kubernetes_typed.client import V1ObjectMetaDict
+from .v1_object_meta import V1ObjectMetaDict
 
 V1ConfigMapDict = TypedDict(
     "V1ConfigMapDict",

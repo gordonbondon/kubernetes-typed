@@ -2,7 +2,7 @@
 """V1CustomResourceSubresourcesDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1CustomResourceSubresourceScaleDict
+from .v1_custom_resource_subresource_scale import V1CustomResourceSubresourceScaleDict
 
 V1CustomResourceSubresourcesDict = TypedDict(
     "V1CustomResourceSubresourcesDict",

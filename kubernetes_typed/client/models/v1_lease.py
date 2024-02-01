@@ -2,7 +2,8 @@
 """V1LeaseDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1LeaseSpecDict, V1ObjectMetaDict
+from .v1_lease_spec import V1LeaseSpecDict
+from .v1_object_meta import V1ObjectMetaDict
 
 V1LeaseDict = TypedDict(
     "V1LeaseDict",

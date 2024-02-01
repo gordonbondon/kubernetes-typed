@@ -2,7 +2,7 @@
 """V1DaemonSetUpdateStrategyDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1RollingUpdateDaemonSetDict
+from .v1_rolling_update_daemon_set import V1RollingUpdateDaemonSetDict
 
 V1DaemonSetUpdateStrategyDict = TypedDict(
     "V1DaemonSetUpdateStrategyDict",

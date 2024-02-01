@@ -2,7 +2,7 @@
 """V1NodeConfigStatusDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1NodeConfigSourceDict
+from .v1_node_config_source import V1NodeConfigSourceDict
 
 V1NodeConfigStatusDict = TypedDict(
     "V1NodeConfigStatusDict",

@@ -2,36 +2,34 @@
 """V1VolumeDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import (
-    V1AWSElasticBlockStoreVolumeSourceDict,
-    V1AzureDiskVolumeSourceDict,
-    V1AzureFileVolumeSourceDict,
-    V1CSIVolumeSourceDict,
-    V1CephFSVolumeSourceDict,
-    V1CinderVolumeSourceDict,
-    V1ConfigMapVolumeSourceDict,
-    V1DownwardAPIVolumeSourceDict,
-    V1EmptyDirVolumeSourceDict,
-    V1FCVolumeSourceDict,
-    V1FlexVolumeSourceDict,
-    V1FlockerVolumeSourceDict,
-    V1GCEPersistentDiskVolumeSourceDict,
-    V1GitRepoVolumeSourceDict,
-    V1GlusterfsVolumeSourceDict,
-    V1HostPathVolumeSourceDict,
-    V1ISCSIVolumeSourceDict,
-    V1NFSVolumeSourceDict,
-    V1PersistentVolumeClaimVolumeSourceDict,
-    V1PhotonPersistentDiskVolumeSourceDict,
-    V1PortworxVolumeSourceDict,
-    V1ProjectedVolumeSourceDict,
-    V1QuobyteVolumeSourceDict,
-    V1RBDVolumeSourceDict,
-    V1ScaleIOVolumeSourceDict,
-    V1SecretVolumeSourceDict,
-    V1StorageOSVolumeSourceDict,
-    V1VsphereVirtualDiskVolumeSourceDict,
-)
+from .v1_aws_elastic_block_store_volume_source import V1AWSElasticBlockStoreVolumeSourceDict
+from .v1_azure_disk_volume_source import V1AzureDiskVolumeSourceDict
+from .v1_azure_file_volume_source import V1AzureFileVolumeSourceDict
+from .v1_csi_volume_source import V1CSIVolumeSourceDict
+from .v1_ceph_fs_volume_source import V1CephFSVolumeSourceDict
+from .v1_cinder_volume_source import V1CinderVolumeSourceDict
+from .v1_config_map_volume_source import V1ConfigMapVolumeSourceDict
+from .v1_downward_api_volume_source import V1DownwardAPIVolumeSourceDict
+from .v1_empty_dir_volume_source import V1EmptyDirVolumeSourceDict
+from .v1_fc_volume_source import V1FCVolumeSourceDict
+from .v1_flex_volume_source import V1FlexVolumeSourceDict
+from .v1_flocker_volume_source import V1FlockerVolumeSourceDict
+from .v1_gce_persistent_disk_volume_source import V1GCEPersistentDiskVolumeSourceDict
+from .v1_git_repo_volume_source import V1GitRepoVolumeSourceDict
+from .v1_glusterfs_volume_source import V1GlusterfsVolumeSourceDict
+from .v1_host_path_volume_source import V1HostPathVolumeSourceDict
+from .v1_iscsi_volume_source import V1ISCSIVolumeSourceDict
+from .v1_nfs_volume_source import V1NFSVolumeSourceDict
+from .v1_persistent_volume_claim_volume_source import V1PersistentVolumeClaimVolumeSourceDict
+from .v1_photon_persistent_disk_volume_source import V1PhotonPersistentDiskVolumeSourceDict
+from .v1_portworx_volume_source import V1PortworxVolumeSourceDict
+from .v1_projected_volume_source import V1ProjectedVolumeSourceDict
+from .v1_quobyte_volume_source import V1QuobyteVolumeSourceDict
+from .v1_rbd_volume_source import V1RBDVolumeSourceDict
+from .v1_scale_io_volume_source import V1ScaleIOVolumeSourceDict
+from .v1_secret_volume_source import V1SecretVolumeSourceDict
+from .v1_storage_os_volume_source import V1StorageOSVolumeSourceDict
+from .v1_vsphere_virtual_disk_volume_source import V1VsphereVirtualDiskVolumeSourceDict
 
 V1VolumeDict = TypedDict(
     "V1VolumeDict",

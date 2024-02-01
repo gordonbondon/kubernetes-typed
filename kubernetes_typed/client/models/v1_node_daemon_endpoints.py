@@ -2,7 +2,7 @@
 """V1NodeDaemonEndpointsDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1DaemonEndpointDict
+from .v1_daemon_endpoint import V1DaemonEndpointDict
 
 V1NodeDaemonEndpointsDict = TypedDict(
     "V1NodeDaemonEndpointsDict",

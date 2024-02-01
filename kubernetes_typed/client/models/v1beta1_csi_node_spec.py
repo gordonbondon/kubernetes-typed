@@ -2,7 +2,7 @@
 """V1beta1CSINodeSpecDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1beta1CSINodeDriverDict
+from .v1beta1_csi_node_driver import V1beta1CSINodeDriverDict
 
 V1beta1CSINodeSpecDict = TypedDict(
     "V1beta1CSINodeSpecDict",

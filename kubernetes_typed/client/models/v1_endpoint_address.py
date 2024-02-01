@@ -2,7 +2,7 @@
 """V1EndpointAddressDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectReferenceDict
+from .v1_object_reference import V1ObjectReferenceDict
 
 V1EndpointAddressDict = TypedDict(
     "V1EndpointAddressDict",

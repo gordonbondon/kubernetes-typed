@@ -2,7 +2,8 @@
 """V1NodeAffinityDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1NodeSelectorDict, V1PreferredSchedulingTermDict
+from .v1_node_selector import V1NodeSelectorDict
+from .v1_preferred_scheduling_term import V1PreferredSchedulingTermDict
 
 V1NodeAffinityDict = TypedDict(
     "V1NodeAffinityDict",

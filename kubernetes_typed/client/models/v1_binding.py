@@ -2,7 +2,8 @@
 """V1BindingDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1ObjectReferenceDict
+from .v1_object_meta import V1ObjectMetaDict
+from .v1_object_reference import V1ObjectReferenceDict
 
 V1BindingDict = TypedDict(
     "V1BindingDict",

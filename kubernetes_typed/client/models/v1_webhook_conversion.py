@@ -2,7 +2,7 @@
 """V1WebhookConversionDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import ApiextensionsV1WebhookClientConfigDict
+from .apiextensions_v1_webhook_client_config import ApiextensionsV1WebhookClientConfigDict
 
 V1WebhookConversionDict = TypedDict(
     "V1WebhookConversionDict",

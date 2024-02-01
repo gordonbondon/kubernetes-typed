@@ -2,32 +2,30 @@
 """V1PersistentVolumeSpecDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import (
-    V1AWSElasticBlockStoreVolumeSourceDict,
-    V1AzureDiskVolumeSourceDict,
-    V1AzureFilePersistentVolumeSourceDict,
-    V1CSIPersistentVolumeSourceDict,
-    V1CephFSPersistentVolumeSourceDict,
-    V1CinderPersistentVolumeSourceDict,
-    V1FCVolumeSourceDict,
-    V1FlexPersistentVolumeSourceDict,
-    V1FlockerVolumeSourceDict,
-    V1GCEPersistentDiskVolumeSourceDict,
-    V1GlusterfsPersistentVolumeSourceDict,
-    V1HostPathVolumeSourceDict,
-    V1ISCSIPersistentVolumeSourceDict,
-    V1LocalVolumeSourceDict,
-    V1NFSVolumeSourceDict,
-    V1ObjectReferenceDict,
-    V1PhotonPersistentDiskVolumeSourceDict,
-    V1PortworxVolumeSourceDict,
-    V1QuobyteVolumeSourceDict,
-    V1RBDPersistentVolumeSourceDict,
-    V1ScaleIOPersistentVolumeSourceDict,
-    V1StorageOSPersistentVolumeSourceDict,
-    V1VolumeNodeAffinityDict,
-    V1VsphereVirtualDiskVolumeSourceDict,
-)
+from .v1_aws_elastic_block_store_volume_source import V1AWSElasticBlockStoreVolumeSourceDict
+from .v1_azure_disk_volume_source import V1AzureDiskVolumeSourceDict
+from .v1_azure_file_persistent_volume_source import V1AzureFilePersistentVolumeSourceDict
+from .v1_csi_persistent_volume_source import V1CSIPersistentVolumeSourceDict
+from .v1_ceph_fs_persistent_volume_source import V1CephFSPersistentVolumeSourceDict
+from .v1_cinder_persistent_volume_source import V1CinderPersistentVolumeSourceDict
+from .v1_fc_volume_source import V1FCVolumeSourceDict
+from .v1_flex_persistent_volume_source import V1FlexPersistentVolumeSourceDict
+from .v1_flocker_volume_source import V1FlockerVolumeSourceDict
+from .v1_gce_persistent_disk_volume_source import V1GCEPersistentDiskVolumeSourceDict
+from .v1_glusterfs_persistent_volume_source import V1GlusterfsPersistentVolumeSourceDict
+from .v1_host_path_volume_source import V1HostPathVolumeSourceDict
+from .v1_iscsi_persistent_volume_source import V1ISCSIPersistentVolumeSourceDict
+from .v1_local_volume_source import V1LocalVolumeSourceDict
+from .v1_nfs_volume_source import V1NFSVolumeSourceDict
+from .v1_object_reference import V1ObjectReferenceDict
+from .v1_photon_persistent_disk_volume_source import V1PhotonPersistentDiskVolumeSourceDict
+from .v1_portworx_volume_source import V1PortworxVolumeSourceDict
+from .v1_quobyte_volume_source import V1QuobyteVolumeSourceDict
+from .v1_rbd_persistent_volume_source import V1RBDPersistentVolumeSourceDict
+from .v1_scale_io_persistent_volume_source import V1ScaleIOPersistentVolumeSourceDict
+from .v1_storage_os_persistent_volume_source import V1StorageOSPersistentVolumeSourceDict
+from .v1_volume_node_affinity import V1VolumeNodeAffinityDict
+from .v1_vsphere_virtual_disk_volume_source import V1VsphereVirtualDiskVolumeSourceDict
 
 V1PersistentVolumeSpecDict = TypedDict(
     "V1PersistentVolumeSpecDict",

@@ -2,7 +2,7 @@
 """V1DeleteOptionsDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1PreconditionsDict
+from .v1_preconditions import V1PreconditionsDict
 
 V1DeleteOptionsDict = TypedDict(
     "V1DeleteOptionsDict",

@@ -2,7 +2,8 @@
 """V1beta1EndpointSliceListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1beta1EndpointSliceDict
+from .v1_list_meta import V1ListMetaDict
+from .v1beta1_endpoint_slice import V1beta1EndpointSliceDict
 
 V1beta1EndpointSliceListDict = TypedDict(
     "V1beta1EndpointSliceListDict",

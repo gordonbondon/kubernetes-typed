@@ -2,7 +2,9 @@
 """V1CustomResourceDefinitionDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1CustomResourceDefinitionSpecDict, V1CustomResourceDefinitionStatusDict, V1ObjectMetaDict
+from .v1_custom_resource_definition_spec import V1CustomResourceDefinitionSpecDict
+from .v1_custom_resource_definition_status import V1CustomResourceDefinitionStatusDict
+from .v1_object_meta import V1ObjectMetaDict
 
 V1CustomResourceDefinitionDict = TypedDict(
     "V1CustomResourceDefinitionDict",

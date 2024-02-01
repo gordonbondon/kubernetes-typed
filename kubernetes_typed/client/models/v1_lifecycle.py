@@ -2,7 +2,7 @@
 """V1LifecycleDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1HandlerDict
+from .v1_handler import V1HandlerDict
 
 V1LifecycleDict = TypedDict(
     "V1LifecycleDict",

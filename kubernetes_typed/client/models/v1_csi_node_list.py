@@ -2,7 +2,8 @@
 """V1CSINodeListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1CSINodeDict, V1ListMetaDict
+from .v1_csi_node import V1CSINodeDict
+from .v1_list_meta import V1ListMetaDict
 
 V1CSINodeListDict = TypedDict(
     "V1CSINodeListDict",

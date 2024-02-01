@@ -2,7 +2,8 @@
 """V1alpha1AuditSinkDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1alpha1AuditSinkSpecDict
+from .v1_object_meta import V1ObjectMetaDict
+from .v1alpha1_audit_sink_spec import V1alpha1AuditSinkSpecDict
 
 V1alpha1AuditSinkDict = TypedDict(
     "V1alpha1AuditSinkDict",

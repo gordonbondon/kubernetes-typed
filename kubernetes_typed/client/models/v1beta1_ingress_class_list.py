@@ -2,7 +2,8 @@
 """V1beta1IngressClassListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1beta1IngressClassDict
+from .v1_list_meta import V1ListMetaDict
+from .v1beta1_ingress_class import V1beta1IngressClassDict
 
 V1beta1IngressClassListDict = TypedDict(
     "V1beta1IngressClassListDict",

@@ -2,7 +2,10 @@
 """V1StatefulSetSpecDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1LabelSelectorDict, V1PersistentVolumeClaimDict, V1PodTemplateSpecDict, V1StatefulSetUpdateStrategyDict
+from .v1_label_selector import V1LabelSelectorDict
+from .v1_persistent_volume_claim import V1PersistentVolumeClaimDict
+from .v1_pod_template_spec import V1PodTemplateSpecDict
+from .v1_stateful_set_update_strategy import V1StatefulSetUpdateStrategyDict
 
 V1StatefulSetSpecDict = TypedDict(
     "V1StatefulSetSpecDict",

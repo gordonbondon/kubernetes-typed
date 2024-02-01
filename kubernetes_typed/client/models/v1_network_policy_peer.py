@@ -2,7 +2,8 @@
 """V1NetworkPolicyPeerDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1IPBlockDict, V1LabelSelectorDict
+from .v1_ip_block import V1IPBlockDict
+from .v1_label_selector import V1LabelSelectorDict
 
 V1NetworkPolicyPeerDict = TypedDict(
     "V1NetworkPolicyPeerDict",

@@ -2,7 +2,9 @@
 """V1DeploymentSpecDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1DeploymentStrategyDict, V1LabelSelectorDict, V1PodTemplateSpecDict
+from .v1_deployment_strategy import V1DeploymentStrategyDict
+from .v1_label_selector import V1LabelSelectorDict
+from .v1_pod_template_spec import V1PodTemplateSpecDict
 
 V1DeploymentSpecDict = TypedDict(
     "V1DeploymentSpecDict",

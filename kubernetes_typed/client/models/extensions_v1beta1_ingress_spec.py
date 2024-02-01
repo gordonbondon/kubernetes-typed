@@ -2,7 +2,9 @@
 """ExtensionsV1beta1IngressSpecDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import ExtensionsV1beta1IngressBackendDict, ExtensionsV1beta1IngressRuleDict, ExtensionsV1beta1IngressTLSDict
+from .extensions_v1beta1_ingress_backend import ExtensionsV1beta1IngressBackendDict
+from .extensions_v1beta1_ingress_rule import ExtensionsV1beta1IngressRuleDict
+from .extensions_v1beta1_ingress_tls import ExtensionsV1beta1IngressTLSDict
 
 ExtensionsV1beta1IngressSpecDict = TypedDict(
     "ExtensionsV1beta1IngressSpecDict",

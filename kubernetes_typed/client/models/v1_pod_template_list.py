@@ -2,7 +2,8 @@
 """V1PodTemplateListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1PodTemplateDict
+from .v1_list_meta import V1ListMetaDict
+from .v1_pod_template import V1PodTemplateDict
 
 V1PodTemplateListDict = TypedDict(
     "V1PodTemplateListDict",

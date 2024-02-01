@@ -2,7 +2,9 @@
 """V1HandlerDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ExecActionDict, V1HTTPGetActionDict, V1TCPSocketActionDict
+from .v1_exec_action import V1ExecActionDict
+from .v1_http_get_action import V1HTTPGetActionDict
+from .v1_tcp_socket_action import V1TCPSocketActionDict
 
 V1HandlerDict = TypedDict(
     "V1HandlerDict",

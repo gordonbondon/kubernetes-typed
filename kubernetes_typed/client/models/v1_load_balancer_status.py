@@ -2,7 +2,7 @@
 """V1LoadBalancerStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1LoadBalancerIngressDict
+from .v1_load_balancer_ingress import V1LoadBalancerIngressDict
 
 V1LoadBalancerStatusDict = TypedDict(
     "V1LoadBalancerStatusDict",

@@ -2,7 +2,9 @@
 """V1beta1SelfSubjectRulesReviewDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1beta1SelfSubjectRulesReviewSpecDict, V1beta1SubjectRulesReviewStatusDict
+from .v1_object_meta import V1ObjectMetaDict
+from .v1beta1_self_subject_rules_review_spec import V1beta1SelfSubjectRulesReviewSpecDict
+from .v1beta1_subject_rules_review_status import V1beta1SubjectRulesReviewStatusDict
 
 V1beta1SelfSubjectRulesReviewDict = TypedDict(
     "V1beta1SelfSubjectRulesReviewDict",

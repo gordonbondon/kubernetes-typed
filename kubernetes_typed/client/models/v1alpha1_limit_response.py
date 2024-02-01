@@ -2,7 +2,7 @@
 """V1alpha1LimitResponseDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1alpha1QueuingConfigurationDict
+from .v1alpha1_queuing_configuration import V1alpha1QueuingConfigurationDict
 
 V1alpha1LimitResponseDict = TypedDict(
     "V1alpha1LimitResponseDict",

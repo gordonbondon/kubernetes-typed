@@ -2,7 +2,8 @@
 """V1PersistentVolumeListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1PersistentVolumeDict
+from .v1_list_meta import V1ListMetaDict
+from .v1_persistent_volume import V1PersistentVolumeDict
 
 V1PersistentVolumeListDict = TypedDict(
     "V1PersistentVolumeListDict",

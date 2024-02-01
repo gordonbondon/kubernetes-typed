@@ -2,7 +2,7 @@
 """V1alpha1VolumeAttachmentStatusDict generated type."""
 from typing import TypedDict, Dict
 
-from kubernetes_typed.client import V1alpha1VolumeErrorDict
+from .v1alpha1_volume_error import V1alpha1VolumeErrorDict
 
 V1alpha1VolumeAttachmentStatusDict = TypedDict(
     "V1alpha1VolumeAttachmentStatusDict",

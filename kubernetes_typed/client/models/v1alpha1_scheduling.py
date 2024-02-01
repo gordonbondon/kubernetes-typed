@@ -2,7 +2,7 @@
 """V1alpha1SchedulingDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import V1TolerationDict
+from .v1_toleration import V1TolerationDict
 
 V1alpha1SchedulingDict = TypedDict(
     "V1alpha1SchedulingDict",

@@ -2,7 +2,8 @@
 """V1beta1ClusterRoleListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1beta1ClusterRoleDict
+from .v1_list_meta import V1ListMetaDict
+from .v1beta1_cluster_role import V1beta1ClusterRoleDict
 
 V1beta1ClusterRoleListDict = TypedDict(
     "V1beta1ClusterRoleListDict",

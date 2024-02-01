@@ -2,7 +2,8 @@
 """V1SubjectRulesReviewStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1NonResourceRuleDict, V1ResourceRuleDict
+from .v1_non_resource_rule import V1NonResourceRuleDict
+from .v1_resource_rule import V1ResourceRuleDict
 
 V1SubjectRulesReviewStatusDict = TypedDict(
     "V1SubjectRulesReviewStatusDict",

@@ -1,3 +1,8 @@
+# 18.20.1
+
+### Bug fix
+- Fix too strict `mypy` version pin ([#24](https://github.com/gordonbondon/kubernetes-typed/pull/24))
+
 # 18.20.0
 
 Initial release of mypy plugins and stubs

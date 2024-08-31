@@ -13,14 +13,14 @@ class Expect(TypedDict):
 
 
 def list_type(typ: str) -> str:
-    if sys.version_info <= (3, 9):
+    if sys.version_info < (3, 10):
         return "List[{0}]".format(typ)
     else:
         return "list[{0}]".format(typ)
 
 
 def optional_type(typ: str) -> str:
-    if sys.version_info <= (3, 8):
+    if sys.version_info < (3, 10):
         return "Optional[{0}]".format(typ)
     else:
         return "{0} | None".format(typ)

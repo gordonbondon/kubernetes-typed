@@ -6,7 +6,7 @@ from typing import List
 
 from setuptools import find_packages, setup
 
-PACKAGE_VERSION = "18.20.0-dev"
+PACKAGE_VERSION = "18.20.1-dev"
 
 
 def find_stub_files(name: str) -> List[str]:

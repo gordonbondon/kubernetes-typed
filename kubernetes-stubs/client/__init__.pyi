@@ -653,3 +653,5 @@ from kubernetes.client.models.v2beta2_pods_metric_status import V2beta2PodsMetri
 from kubernetes.client.models.v2beta2_resource_metric_source import V2beta2ResourceMetricSource as V2beta2ResourceMetricSource
 from kubernetes.client.models.v2beta2_resource_metric_status import V2beta2ResourceMetricStatus as V2beta2ResourceMetricStatus
 from kubernetes.client.models.version_info import VersionInfo as VersionInfo
+
+__version__: str

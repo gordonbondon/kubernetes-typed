@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """Generating mypy stubs."""
 
+import os
 import shutil
+import sys
 from argparse import ArgumentParser
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 from scripts.generate_utils import PROJECT_DIRECTORY, clone_and_generate
 

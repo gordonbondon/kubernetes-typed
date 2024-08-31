@@ -7,7 +7,7 @@ from typing import Union
 
 from black import WriteBack, format_file_in_place
 from black.mode import Mode
-from git import RemoteProgress, Repo
+from git import Repo
 from mypy.stubgen import generate_stubs, parse_options
 
 PROJECT_DIRECTORY = Path(__file__).parent.parent
@@ -55,7 +55,7 @@ def clone_and_generate(clone_dir: Path, package_dir: Path, dst_dir: Path, branch
     repo = Repo.clone_from(
         "https://github.com/kubernetes-client/python.git",
         clone_dir,
-        progress=RemoteProgress(),
+        progress=None,
         branch=branch,
         depth=1,
     )

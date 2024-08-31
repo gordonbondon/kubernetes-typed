@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import List, Tuple, TypedDict
 
 import pytest
@@ -9,6 +10,20 @@ class Expect(TypedDict):
     normal: str
     error: str
     exit_status: int
+
+
+def list_type(typ: str) -> str:
+    if sys.version_info <= (3, 9):
+        return "List[{0}]".format(typ)
+    else:
+        return "list[{0}]".format(typ)
+
+
+def optional_type(typ: str) -> str:
+    if sys.version_info <= (3, 9):
+        return "Optional[{0}]".format(typ)
+    else:
+        return "{0} | None".format(typ)
 
 
 case_directory = os.path.join(os.path.dirname(__file__), "cases")
@@ -34,8 +49,8 @@ cases: List[Tuple[str, Expect]] = [
                 note: Revealed type is "builtins.list[builtins.str]"
                 note: Revealed type is "builtins.dict[builtins.str, builtins.list[builtins.str]]"
                 note: Revealed type is "datetime.datetime"
-                error: Incompatible types in assignment (expression has type "str", variable has type "list[str]")
-            """,
+                error: Incompatible types in assignment (expression has type "str", variable has type "{0}")
+            """.format(list_type("str")),
             error="",
             exit_status=1,
         ),
@@ -44,10 +59,10 @@ cases: List[Tuple[str, Expect]] = [
         "read_kubernetes.py",
         Expect(
             normal="""
-                error: Argument "name" to "V1Container" has incompatible type "int"; expected "str | None"
+                error: Argument "name" to "V1Container" has incompatible type "int"; expected "{0}"
                 note: Revealed type is "kubernetes.client.models.v1_pod_spec.V1PodSpec"
                 note: Revealed type is "builtins.str"
-            """,
+            """.format(optional_type("str")),
             error="",
             exit_status=1,
         ),

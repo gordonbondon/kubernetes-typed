@@ -12,20 +12,20 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 6
       fail-fast: false
       matrix:
-        python-version: ["3.8", "3.9", "3.10.0-rc.1"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13.0-rc.1"] # check supported versions at https://devguide.python.org/versions/
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Cache pip
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements-test.txt') }}-${{ hashFiles('setup.py') }}
@@ -37,7 +37,7 @@ jobs:
           pip install --upgrade --upgrade-strategy eager tox tox-gh-actions
 
       - name: Cache tox
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             .tox

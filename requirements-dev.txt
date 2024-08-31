@@ -1,2 +1,1 @@
 -r requirements-test.txt
-https://github.com/matangover/mypyls/archive/master.zip#egg=mypyls[default-mypy]

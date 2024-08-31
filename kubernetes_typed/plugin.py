@@ -1,4 +1,5 @@
 """plugin implements mypy plugin."""
+
 from functools import partial
 from types import MappingProxyType
 from typing import Any, Callable, List, Optional, Tuple
@@ -64,7 +65,7 @@ def function_signature_callback(ctx: FunctionSigContext) -> CallableType:
 
     try:
         new_arg_types: List[MypyType] = [
-            UnionType([AnyType(TypeOfAny.implementation_artifact), NoneType()]) for _ in enumerate(signature.arg_names)
+            UnionType([AnyType(TypeOfAny.implementation_artifact), NoneType()]) for _ in signature.arg_names
         ]
 
         for i, _ in enumerate(signature.arg_names):
@@ -130,7 +131,7 @@ def get_attribute_type(api: TypeChecker, name: str) -> Optional[Instance]:
             node = node.target.type
         assert isinstance(node, TypeInfo)
         any_type = AnyType(TypeOfAny.from_omitted_generics)
-        return Instance(node, [any_type for _ in enumerate(node.defn.type_vars)])
+        return Instance(node, [any_type for _ in node.defn.type_vars])
     except KeyError:
         return None
 

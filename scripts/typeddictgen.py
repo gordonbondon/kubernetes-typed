@@ -6,8 +6,9 @@ import inspect
 import os
 import re
 import shutil
+import sys
 from pathlib import Path
-from typing import List
+from typing import List, cast
 
 from jinja2 import Environment, FileSystemLoader
 from kubernetes import client as kubernetes_client
@@ -18,6 +19,9 @@ from kubernetes_typed.plugin import (
     NATIVE_TYPES_MAPPING,
     OPENAPI_ATTRIBUTE,
 )
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
 from scripts.generate_utils import PROJECT_DIRECTORY, comment_codegen, format_codegen
 
 DICT_CLIENT_TEMPLATE_DIRECTORY = PROJECT_DIRECTORY / "scripts" / "templates" / "typeddict"
@@ -25,7 +29,7 @@ DICT_CLIENT_DIRECTORY = PROJECT_DIRECTORY / "kubernetes_typed" / "client"
 DICT_CLIENT_MODELS_DIRECTORY = DICT_CLIENT_DIRECTORY / "models"
 
 
-class Attribute(object):
+class Attribute:
     """Represents parsed state of kubernetes client model attribute."""
 
     def __init__(self, name: str, class_name: str, model_name: str) -> None:
@@ -89,7 +93,7 @@ class Attribute(object):
         return typ
 
 
-class Model(object):
+class Model:
     """Represents parsed state of kubernetes client model."""
 
     def __init__(self, class_name: str, klass: object) -> None:
@@ -122,7 +126,7 @@ class Model(object):
         imports = [getattr(attr, import_type, None) for attr in self.attributes]
 
         # flatten
-        imports = [imp for sublist in imports for imp in sublist]
+        imports = [imp for sublist in imports for imp in cast(list[str], sublist)]
 
         # remove nulls
         imports = [imp for imp in imports if imp is not None]
@@ -137,7 +141,7 @@ class Model(object):
         if self.name in imports:
             imports.remove(self.name)
 
-        return imports
+        return cast(list[str], imports)
 
 
 def filter_models_classes(klass: object) -> bool:

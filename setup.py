@@ -1,4 +1,5 @@
 """kubernetes-typed."""
+
 import os
 import pathlib
 from typing import List
@@ -26,7 +27,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 tests_require = [
     "black",
-    "gitpython==3.1.9",
+    "gitpython==3.1.43",
     "isort",
     "flake8",
     "flake8-black",
@@ -58,6 +59,8 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3 :: Only",
         "Topic :: Software Development",
         "Typing :: Typed",
@@ -74,8 +77,9 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "jsonschema-typed-v2",
-        "mypy>=0.800, <=0.910",
-        "mypy-extensions",
+        "jsonschema<4.18",
+        "mypy>=1.9.0",
+        "mypy-extensions>=1.0.0",
         "PyYAML",
     ],
     extras_require={"dev": tests_require, "client": ["kubernetes"]},

@@ -1,4 +1,5 @@
 """plugin implements mypy plugin."""
+
 from typing import Any, Callable, Dict, List, Optional, Tuple, cast
 
 import yaml

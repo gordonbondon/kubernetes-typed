@@ -1,4 +1,5 @@
 """crd_typed provides mypy plugin and default class for Kubernetes CRD yaml files."""
+
 from typing import Any, Dict
 
 

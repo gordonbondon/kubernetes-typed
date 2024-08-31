@@ -17,7 +17,7 @@ pip install -r ./requirements-dev.txt
 
 Run tests with `tox`:
 ```
-tox -epy38
+tox -epy312
 ```
 
 ## Updating kubernetes-client version

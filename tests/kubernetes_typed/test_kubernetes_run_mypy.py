@@ -34,7 +34,7 @@ cases: List[Tuple[str, Expect]] = [
                 note: Revealed type is "builtins.list[builtins.str]"
                 note: Revealed type is "builtins.dict[builtins.str, builtins.list[builtins.str]]"
                 note: Revealed type is "datetime.datetime"
-                error: Incompatible types in assignment (expression has type "str", variable has type "List[str]")
+                error: Incompatible types in assignment (expression has type "str", variable has type "list[str]")
             """,
             error="",
             exit_status=1,
@@ -44,7 +44,7 @@ cases: List[Tuple[str, Expect]] = [
         "read_kubernetes.py",
         Expect(
             normal="""
-                error: Argument "name" to "V1Container" has incompatible type "int"; expected "Optional[str]"
+                error: Argument "name" to "V1Container" has incompatible type "int"; expected "str | None"
                 note: Revealed type is "kubernetes.client.models.v1_pod_spec.V1PodSpec"
                 note: Revealed type is "builtins.str"
             """,

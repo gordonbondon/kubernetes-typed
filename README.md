@@ -10,7 +10,7 @@ mypy plugin to dynamically define types for Kubernetes objects.
 ## Features
 
 * [Type checking for Custom Resources](#Custom-Resource-Definitions)
-* [Type checking forkubernetes-client](#Kubernetes-Python-Client-types)
+* [Type checking for kubernetes-client](#Kubernetes-Python-Client-types)
 
 ## Installation
 

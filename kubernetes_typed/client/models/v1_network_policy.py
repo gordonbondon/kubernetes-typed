@@ -2,7 +2,8 @@
 """V1NetworkPolicyDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1NetworkPolicySpecDict, V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_network_policy_spec import V1NetworkPolicySpecDict
 
 V1NetworkPolicyDict = TypedDict(
     "V1NetworkPolicyDict",

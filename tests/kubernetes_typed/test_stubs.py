@@ -18,6 +18,9 @@ DICT_TMP_CLIENT_MODELS_DIRECTORY = DICT_TMP_CLIENT_DIRECTORY / "models"
 
 
 def diff(src: str, dst: str) -> str:
+    subprocess.run("rm -rf {0}/**/__pycache__/*.pyc".format(dst), shell=True)
+    subprocess.run("rm -rf {0}/__pycache__/*.pyc".format(dst), shell=True)
+
     result = subprocess.run(
         [
             "git",

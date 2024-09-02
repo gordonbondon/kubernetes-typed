@@ -2,7 +2,8 @@
 """V1PodAffinityDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1PodAffinityTermDict, V1WeightedPodAffinityTermDict
+from kubernetes_typed.client.models.v1_weighted_pod_affinity_term import V1WeightedPodAffinityTermDict
+from kubernetes_typed.client.models.v1_pod_affinity_term import V1PodAffinityTermDict
 
 V1PodAffinityDict = TypedDict(
     "V1PodAffinityDict",

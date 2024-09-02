@@ -2,7 +2,7 @@
 """V1StorageOSVolumeSourceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1LocalObjectReferenceDict
+from kubernetes_typed.client.models.v1_local_object_reference import V1LocalObjectReferenceDict
 
 V1StorageOSVolumeSourceDict = TypedDict(
     "V1StorageOSVolumeSourceDict",

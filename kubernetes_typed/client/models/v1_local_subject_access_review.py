@@ -2,7 +2,9 @@
 """V1LocalSubjectAccessReviewDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1SubjectAccessReviewSpecDict, V1SubjectAccessReviewStatusDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_subject_access_review_spec import V1SubjectAccessReviewSpecDict
+from kubernetes_typed.client.models.v1_subject_access_review_status import V1SubjectAccessReviewStatusDict
 
 V1LocalSubjectAccessReviewDict = TypedDict(
     "V1LocalSubjectAccessReviewDict",

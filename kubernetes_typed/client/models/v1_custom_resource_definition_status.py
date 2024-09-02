@@ -2,7 +2,8 @@
 """V1CustomResourceDefinitionStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1CustomResourceDefinitionConditionDict, V1CustomResourceDefinitionNamesDict
+from kubernetes_typed.client.models.v1_custom_resource_definition_names import V1CustomResourceDefinitionNamesDict
+from kubernetes_typed.client.models.v1_custom_resource_definition_condition import V1CustomResourceDefinitionConditionDict
 
 V1CustomResourceDefinitionStatusDict = TypedDict(
     "V1CustomResourceDefinitionStatusDict",

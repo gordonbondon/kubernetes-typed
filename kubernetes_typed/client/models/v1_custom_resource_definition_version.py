@@ -2,7 +2,9 @@
 """V1CustomResourceDefinitionVersionDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1CustomResourceColumnDefinitionDict, V1CustomResourceSubresourcesDict, V1CustomResourceValidationDict
+from kubernetes_typed.client.models.v1_custom_resource_column_definition import V1CustomResourceColumnDefinitionDict
+from kubernetes_typed.client.models.v1_custom_resource_validation import V1CustomResourceValidationDict
+from kubernetes_typed.client.models.v1_custom_resource_subresources import V1CustomResourceSubresourcesDict
 
 V1CustomResourceDefinitionVersionDict = TypedDict(
     "V1CustomResourceDefinitionVersionDict",

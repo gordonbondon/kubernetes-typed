@@ -2,7 +2,8 @@
 """V1StatusDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ListMetaDict, V1StatusDetailsDict
+from kubernetes_typed.client.models.v1_status_details import V1StatusDetailsDict
+from kubernetes_typed.client.models.v1_list_meta import V1ListMetaDict
 
 V1StatusDict = TypedDict(
     "V1StatusDict",

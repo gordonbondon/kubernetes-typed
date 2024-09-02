@@ -2,7 +2,7 @@
 """V1NamespaceStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1NamespaceConditionDict
+from kubernetes_typed.client.models.v1_namespace_condition import V1NamespaceConditionDict
 
 V1NamespaceStatusDict = TypedDict(
     "V1NamespaceStatusDict",

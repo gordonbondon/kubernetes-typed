@@ -2,7 +2,7 @@
 """V2beta2ResourceMetricStatusDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V2beta2MetricValueStatusDict
+from kubernetes_typed.client.models.v2beta2_metric_value_status import V2beta2MetricValueStatusDict
 
 V2beta2ResourceMetricStatusDict = TypedDict(
     "V2beta2ResourceMetricStatusDict",

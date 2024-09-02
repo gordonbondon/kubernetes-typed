@@ -2,18 +2,16 @@
 """V1beta1PodSecurityPolicySpecDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import (
-    V1beta1AllowedCSIDriverDict,
-    V1beta1AllowedFlexVolumeDict,
-    V1beta1AllowedHostPathDict,
-    V1beta1FSGroupStrategyOptionsDict,
-    V1beta1HostPortRangeDict,
-    V1beta1RunAsGroupStrategyOptionsDict,
-    V1beta1RunAsUserStrategyOptionsDict,
-    V1beta1RuntimeClassStrategyOptionsDict,
-    V1beta1SELinuxStrategyOptionsDict,
-    V1beta1SupplementalGroupsStrategyOptionsDict,
-)
+from kubernetes_typed.client.models.v1beta1_allowed_csi_driver import V1beta1AllowedCSIDriverDict
+from kubernetes_typed.client.models.v1beta1_allowed_flex_volume import V1beta1AllowedFlexVolumeDict
+from kubernetes_typed.client.models.v1beta1_allowed_host_path import V1beta1AllowedHostPathDict
+from kubernetes_typed.client.models.v1beta1_fs_group_strategy_options import V1beta1FSGroupStrategyOptionsDict
+from kubernetes_typed.client.models.v1beta1_host_port_range import V1beta1HostPortRangeDict
+from kubernetes_typed.client.models.v1beta1_run_as_group_strategy_options import V1beta1RunAsGroupStrategyOptionsDict
+from kubernetes_typed.client.models.v1beta1_run_as_user_strategy_options import V1beta1RunAsUserStrategyOptionsDict
+from kubernetes_typed.client.models.v1beta1_runtime_class_strategy_options import V1beta1RuntimeClassStrategyOptionsDict
+from kubernetes_typed.client.models.v1beta1_se_linux_strategy_options import V1beta1SELinuxStrategyOptionsDict
+from kubernetes_typed.client.models.v1beta1_supplemental_groups_strategy_options import V1beta1SupplementalGroupsStrategyOptionsDict
 
 V1beta1PodSecurityPolicySpecDict = TypedDict(
     "V1beta1PodSecurityPolicySpecDict",

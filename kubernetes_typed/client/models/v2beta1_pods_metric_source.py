@@ -2,7 +2,7 @@
 """V2beta1PodsMetricSourceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1LabelSelectorDict
+from kubernetes_typed.client.models.v1_label_selector import V1LabelSelectorDict
 
 V2beta1PodsMetricSourceDict = TypedDict(
     "V2beta1PodsMetricSourceDict",

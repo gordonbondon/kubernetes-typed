@@ -2,7 +2,8 @@
 """V1MutatingWebhookConfigurationListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1MutatingWebhookConfigurationDict
+from kubernetes_typed.client.models.v1_mutating_webhook_configuration import V1MutatingWebhookConfigurationDict
+from kubernetes_typed.client.models.v1_list_meta import V1ListMetaDict
 
 V1MutatingWebhookConfigurationListDict = TypedDict(
     "V1MutatingWebhookConfigurationListDict",

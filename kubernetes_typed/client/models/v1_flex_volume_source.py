@@ -2,7 +2,7 @@
 """V1FlexVolumeSourceDict generated type."""
 from typing import TypedDict, Dict
 
-from kubernetes_typed.client import V1LocalObjectReferenceDict
+from kubernetes_typed.client.models.v1_local_object_reference import V1LocalObjectReferenceDict
 
 V1FlexVolumeSourceDict = TypedDict(
     "V1FlexVolumeSourceDict",

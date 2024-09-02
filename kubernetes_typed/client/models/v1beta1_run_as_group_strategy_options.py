@@ -2,7 +2,7 @@
 """V1beta1RunAsGroupStrategyOptionsDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1beta1IDRangeDict
+from kubernetes_typed.client.models.v1beta1_id_range import V1beta1IDRangeDict
 
 V1beta1RunAsGroupStrategyOptionsDict = TypedDict(
     "V1beta1RunAsGroupStrategyOptionsDict",

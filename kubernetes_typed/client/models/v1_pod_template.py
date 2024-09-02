@@ -2,7 +2,8 @@
 """V1PodTemplateDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1PodTemplateSpecDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_pod_template_spec import V1PodTemplateSpecDict
 
 V1PodTemplateDict = TypedDict(
     "V1PodTemplateDict",

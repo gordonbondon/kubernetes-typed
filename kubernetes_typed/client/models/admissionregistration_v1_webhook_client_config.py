@@ -2,7 +2,7 @@
 """AdmissionregistrationV1WebhookClientConfigDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import AdmissionregistrationV1ServiceReferenceDict
+from kubernetes_typed.client.models.admissionregistration_v1_service_reference import AdmissionregistrationV1ServiceReferenceDict
 
 AdmissionregistrationV1WebhookClientConfigDict = TypedDict(
     "AdmissionregistrationV1WebhookClientConfigDict",

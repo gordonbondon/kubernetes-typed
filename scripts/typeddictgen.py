@@ -8,7 +8,7 @@ import re
 import shutil
 import sys
 from pathlib import Path
-from typing import List, cast
+from typing import Dict, List, cast
 
 from jinja2 import Environment, FileSystemLoader
 from kubernetes import client as kubernetes_client
@@ -39,7 +39,7 @@ class Attribute:
         self.model_name = model_name
         self.direct_import: List[str] = []
         self.typing_import: List[str] = []
-        self.model_import: List[str] = []
+        self.model_import: Dict[str, List[str]] = {}
 
         self.type = self.parse_type(class_name)
 
@@ -81,14 +81,20 @@ class Attribute:
         if klass is None:
             raise NameError("Attribute with missing model: {0}".format(class_name))
 
+        module = klass.__module__.replace("kubernetes.", "kubernetes_typed.")
         typ = "{0}Dict".format(klass.__qualname__)
-        self.model_import.append(typ)
 
         # recursive types not supported https://github.com/python/mypy/issues/731
         if typ == self.model_name:
             self.typing_import.append("Any")
             self.typing_import.append("Dict")
             typ = "Dict[Any, Any]"
+        else:
+            if self.model_import.get(module) is not None:
+                self.model_import[module].append(typ)
+            else:
+                self.model_import[module] = []
+                self.model_import[module].append(typ)
 
         return typ
 
@@ -116,11 +122,35 @@ class Model:
         for name, typ in oapi.items():
             self.attributes.append(Attribute(attrs[name], typ, self.name))
 
-        self.direct_import = self.uniq_imports("direct_import")
-        self.typing_import = self.uniq_imports("typing_import")
-        self.model_import = self.uniq_imports("model_import")
+        self.direct_import = self.uniq_imports_list("direct_import")
+        self.typing_import = self.uniq_imports_list("typing_import")
+        self.model_import = self.uniq_imports_dict("model_import")
 
-    def uniq_imports(self, import_type: str) -> List[str]:
+    def uniq_imports_dict(self, import_type: str) -> Dict[str, List[str]]:
+        """Get uniq client import for the model."""
+        model_import: Dict[str, List[str]] = {}
+
+        # get all imports
+        imports = [getattr(attr, import_type, None) for attr in self.attributes]
+
+        for combo in cast(List[Dict[str, List[str]]], imports):
+            for module, imp in combo.items():
+                if model_import.get(module) is not None:
+                    model_import[module].extend(imp)
+                else:
+                    model_import[module] = []
+                    model_import[module].extend(imp)
+
+        # uniq and sort
+        for module, models in model_import.items():
+            mod = models
+            mod = list(set(mod))
+            mod.sort()
+            model_import[module] = mod
+
+        return model_import
+
+    def uniq_imports_list(self, import_type: str) -> List[str]:
         """Get uniq import for the model."""
         # get all imports
         imports = [getattr(attr, import_type, None) for attr in self.attributes]

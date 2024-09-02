@@ -2,15 +2,13 @@
 """V1NodeStatusDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import (
-    V1AttachedVolumeDict,
-    V1ContainerImageDict,
-    V1NodeAddressDict,
-    V1NodeConditionDict,
-    V1NodeConfigStatusDict,
-    V1NodeDaemonEndpointsDict,
-    V1NodeSystemInfoDict,
-)
+from kubernetes_typed.client.models.v1_node_address import V1NodeAddressDict
+from kubernetes_typed.client.models.v1_node_condition import V1NodeConditionDict
+from kubernetes_typed.client.models.v1_node_config_status import V1NodeConfigStatusDict
+from kubernetes_typed.client.models.v1_node_daemon_endpoints import V1NodeDaemonEndpointsDict
+from kubernetes_typed.client.models.v1_container_image import V1ContainerImageDict
+from kubernetes_typed.client.models.v1_node_system_info import V1NodeSystemInfoDict
+from kubernetes_typed.client.models.v1_attached_volume import V1AttachedVolumeDict
 
 V1NodeStatusDict = TypedDict(
     "V1NodeStatusDict",

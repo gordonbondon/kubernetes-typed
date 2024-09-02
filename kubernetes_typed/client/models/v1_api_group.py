@@ -2,7 +2,8 @@
 """V1APIGroupDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1GroupVersionForDiscoveryDict, V1ServerAddressByClientCIDRDict
+from kubernetes_typed.client.models.v1_group_version_for_discovery import V1GroupVersionForDiscoveryDict
+from kubernetes_typed.client.models.v1_server_address_by_client_cidr import V1ServerAddressByClientCIDRDict
 
 V1APIGroupDict = TypedDict(
     "V1APIGroupDict",

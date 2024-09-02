@@ -2,7 +2,8 @@
 """V2beta1ObjectMetricSourceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1LabelSelectorDict, V2beta1CrossVersionObjectReferenceDict
+from kubernetes_typed.client.models.v1_label_selector import V1LabelSelectorDict
+from kubernetes_typed.client.models.v2beta1_cross_version_object_reference import V2beta1CrossVersionObjectReferenceDict
 
 V2beta1ObjectMetricSourceDict = TypedDict(
     "V2beta1ObjectMetricSourceDict",

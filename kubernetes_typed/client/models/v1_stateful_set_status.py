@@ -2,7 +2,7 @@
 """V1StatefulSetStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1StatefulSetConditionDict
+from kubernetes_typed.client.models.v1_stateful_set_condition import V1StatefulSetConditionDict
 
 V1StatefulSetStatusDict = TypedDict(
     "V1StatefulSetStatusDict",

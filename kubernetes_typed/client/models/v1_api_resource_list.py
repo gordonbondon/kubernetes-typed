@@ -2,7 +2,7 @@
 """V1APIResourceListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1APIResourceDict
+from kubernetes_typed.client.models.v1_api_resource import V1APIResourceDict
 
 V1APIResourceListDict = TypedDict(
     "V1APIResourceListDict",

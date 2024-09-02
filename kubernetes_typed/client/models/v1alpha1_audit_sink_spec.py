@@ -2,7 +2,8 @@
 """V1alpha1AuditSinkSpecDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1alpha1PolicyDict, V1alpha1WebhookDict
+from kubernetes_typed.client.models.v1alpha1_policy import V1alpha1PolicyDict
+from kubernetes_typed.client.models.v1alpha1_webhook import V1alpha1WebhookDict
 
 V1alpha1AuditSinkSpecDict = TypedDict(
     "V1alpha1AuditSinkSpecDict",

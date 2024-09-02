@@ -2,7 +2,7 @@
 """V1CustomResourceConversionDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1WebhookConversionDict
+from kubernetes_typed.client.models.v1_webhook_conversion import V1WebhookConversionDict
 
 V1CustomResourceConversionDict = TypedDict(
     "V1CustomResourceConversionDict",

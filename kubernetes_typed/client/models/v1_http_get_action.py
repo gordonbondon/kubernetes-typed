@@ -2,7 +2,7 @@
 """V1HTTPGetActionDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1HTTPHeaderDict
+from kubernetes_typed.client.models.v1_http_header import V1HTTPHeaderDict
 
 V1HTTPGetActionDict = TypedDict(
     "V1HTTPGetActionDict",

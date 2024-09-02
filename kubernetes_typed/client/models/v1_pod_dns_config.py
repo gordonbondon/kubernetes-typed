@@ -2,7 +2,7 @@
 """V1PodDNSConfigDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1PodDNSConfigOptionDict
+from kubernetes_typed.client.models.v1_pod_dns_config_option import V1PodDNSConfigOptionDict
 
 V1PodDNSConfigDict = TypedDict(
     "V1PodDNSConfigDict",

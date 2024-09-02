@@ -2,7 +2,7 @@
 """V1alpha1LimitedPriorityLevelConfigurationDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1alpha1LimitResponseDict
+from kubernetes_typed.client.models.v1alpha1_limit_response import V1alpha1LimitResponseDict
 
 V1alpha1LimitedPriorityLevelConfigurationDict = TypedDict(
     "V1alpha1LimitedPriorityLevelConfigurationDict",

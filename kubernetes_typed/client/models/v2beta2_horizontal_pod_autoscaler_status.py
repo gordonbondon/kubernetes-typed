@@ -3,7 +3,8 @@
 import datetime
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V2beta2HorizontalPodAutoscalerConditionDict, V2beta2MetricStatusDict
+from kubernetes_typed.client.models.v2beta2_horizontal_pod_autoscaler_condition import V2beta2HorizontalPodAutoscalerConditionDict
+from kubernetes_typed.client.models.v2beta2_metric_status import V2beta2MetricStatusDict
 
 V2beta2HorizontalPodAutoscalerStatusDict = TypedDict(
     "V2beta2HorizontalPodAutoscalerStatusDict",

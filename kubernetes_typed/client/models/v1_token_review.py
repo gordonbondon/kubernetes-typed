@@ -2,7 +2,9 @@
 """V1TokenReviewDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1TokenReviewSpecDict, V1TokenReviewStatusDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_token_review_spec import V1TokenReviewSpecDict
+from kubernetes_typed.client.models.v1_token_review_status import V1TokenReviewStatusDict
 
 V1TokenReviewDict = TypedDict(
     "V1TokenReviewDict",

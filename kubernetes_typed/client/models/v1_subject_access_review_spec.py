@@ -2,7 +2,8 @@
 """V1SubjectAccessReviewSpecDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import V1NonResourceAttributesDict, V1ResourceAttributesDict
+from kubernetes_typed.client.models.v1_non_resource_attributes import V1NonResourceAttributesDict
+from kubernetes_typed.client.models.v1_resource_attributes import V1ResourceAttributesDict
 
 V1SubjectAccessReviewSpecDict = TypedDict(
     "V1SubjectAccessReviewSpecDict",

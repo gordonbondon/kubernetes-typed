@@ -2,7 +2,8 @@
 """V1ServiceAccountListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1ServiceAccountDict
+from kubernetes_typed.client.models.v1_service_account import V1ServiceAccountDict
+from kubernetes_typed.client.models.v1_list_meta import V1ListMetaDict
 
 V1ServiceAccountListDict = TypedDict(
     "V1ServiceAccountListDict",

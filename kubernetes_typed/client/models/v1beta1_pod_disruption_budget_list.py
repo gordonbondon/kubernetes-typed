@@ -2,7 +2,8 @@
 """V1beta1PodDisruptionBudgetListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1beta1PodDisruptionBudgetDict
+from kubernetes_typed.client.models.v1beta1_pod_disruption_budget import V1beta1PodDisruptionBudgetDict
+from kubernetes_typed.client.models.v1_list_meta import V1ListMetaDict
 
 V1beta1PodDisruptionBudgetListDict = TypedDict(
     "V1beta1PodDisruptionBudgetListDict",

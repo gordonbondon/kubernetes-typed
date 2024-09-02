@@ -2,7 +2,8 @@
 """V1CSIDriverDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1CSIDriverSpecDict, V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_csi_driver_spec import V1CSIDriverSpecDict
 
 V1CSIDriverDict = TypedDict(
     "V1CSIDriverDict",

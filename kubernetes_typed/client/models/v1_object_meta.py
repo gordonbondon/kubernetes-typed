@@ -3,7 +3,8 @@
 import datetime
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import V1ManagedFieldsEntryDict, V1OwnerReferenceDict
+from kubernetes_typed.client.models.v1_managed_fields_entry import V1ManagedFieldsEntryDict
+from kubernetes_typed.client.models.v1_owner_reference import V1OwnerReferenceDict
 
 V1ObjectMetaDict = TypedDict(
     "V1ObjectMetaDict",

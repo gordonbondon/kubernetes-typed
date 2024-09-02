@@ -2,7 +2,7 @@
 """V1ReplicaSetStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ReplicaSetConditionDict
+from kubernetes_typed.client.models.v1_replica_set_condition import V1ReplicaSetConditionDict
 
 V1ReplicaSetStatusDict = TypedDict(
     "V1ReplicaSetStatusDict",

@@ -2,7 +2,10 @@
 """V2beta1MetricSpecDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V2beta1ExternalMetricSourceDict, V2beta1ObjectMetricSourceDict, V2beta1PodsMetricSourceDict, V2beta1ResourceMetricSourceDict
+from kubernetes_typed.client.models.v2beta1_external_metric_source import V2beta1ExternalMetricSourceDict
+from kubernetes_typed.client.models.v2beta1_object_metric_source import V2beta1ObjectMetricSourceDict
+from kubernetes_typed.client.models.v2beta1_pods_metric_source import V2beta1PodsMetricSourceDict
+from kubernetes_typed.client.models.v2beta1_resource_metric_source import V2beta1ResourceMetricSourceDict
 
 V2beta1MetricSpecDict = TypedDict(
     "V2beta1MetricSpecDict",

@@ -2,7 +2,8 @@
 """V1ResourceQuotaListDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1ListMetaDict, V1ResourceQuotaDict
+from kubernetes_typed.client.models.v1_resource_quota import V1ResourceQuotaDict
+from kubernetes_typed.client.models.v1_list_meta import V1ListMetaDict
 
 V1ResourceQuotaListDict = TypedDict(
     "V1ResourceQuotaListDict",

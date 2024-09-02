@@ -2,7 +2,8 @@
 """V1NetworkPolicyIngressRuleDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1NetworkPolicyPeerDict, V1NetworkPolicyPortDict
+from kubernetes_typed.client.models.v1_network_policy_peer import V1NetworkPolicyPeerDict
+from kubernetes_typed.client.models.v1_network_policy_port import V1NetworkPolicyPortDict
 
 V1NetworkPolicyIngressRuleDict = TypedDict(
     "V1NetworkPolicyIngressRuleDict",

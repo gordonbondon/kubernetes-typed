@@ -2,7 +2,7 @@
 """V1alpha1FlowSchemaStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1alpha1FlowSchemaConditionDict
+from kubernetes_typed.client.models.v1alpha1_flow_schema_condition import V1alpha1FlowSchemaConditionDict
 
 V1alpha1FlowSchemaStatusDict = TypedDict(
     "V1alpha1FlowSchemaStatusDict",

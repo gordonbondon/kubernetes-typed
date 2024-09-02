@@ -2,7 +2,9 @@
 """V1ReplicationControllerDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1ReplicationControllerSpecDict, V1ReplicationControllerStatusDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_replication_controller_spec import V1ReplicationControllerSpecDict
+from kubernetes_typed.client.models.v1_replication_controller_status import V1ReplicationControllerStatusDict
 
 V1ReplicationControllerDict = TypedDict(
     "V1ReplicationControllerDict",

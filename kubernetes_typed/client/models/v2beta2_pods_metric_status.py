@@ -2,7 +2,8 @@
 """V2beta2PodsMetricStatusDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V2beta2MetricIdentifierDict, V2beta2MetricValueStatusDict
+from kubernetes_typed.client.models.v2beta2_metric_value_status import V2beta2MetricValueStatusDict
+from kubernetes_typed.client.models.v2beta2_metric_identifier import V2beta2MetricIdentifierDict
 
 V2beta2PodsMetricStatusDict = TypedDict(
     "V2beta2PodsMetricStatusDict",

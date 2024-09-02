@@ -2,7 +2,7 @@
 """V1beta1CustomResourceValidationDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1beta1JSONSchemaPropsDict
+from kubernetes_typed.client.models.v1beta1_json_schema_props import V1beta1JSONSchemaPropsDict
 
 V1beta1CustomResourceValidationDict = TypedDict(
     "V1beta1CustomResourceValidationDict",

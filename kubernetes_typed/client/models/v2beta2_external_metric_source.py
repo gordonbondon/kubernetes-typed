@@ -2,7 +2,8 @@
 """V2beta2ExternalMetricSourceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V2beta2MetricIdentifierDict, V2beta2MetricTargetDict
+from kubernetes_typed.client.models.v2beta2_metric_identifier import V2beta2MetricIdentifierDict
+from kubernetes_typed.client.models.v2beta2_metric_target import V2beta2MetricTargetDict
 
 V2beta2ExternalMetricSourceDict = TypedDict(
     "V2beta2ExternalMetricSourceDict",

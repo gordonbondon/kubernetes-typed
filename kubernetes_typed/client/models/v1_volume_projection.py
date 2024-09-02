@@ -2,7 +2,10 @@
 """V1VolumeProjectionDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ConfigMapProjectionDict, V1DownwardAPIProjectionDict, V1SecretProjectionDict, V1ServiceAccountTokenProjectionDict
+from kubernetes_typed.client.models.v1_config_map_projection import V1ConfigMapProjectionDict
+from kubernetes_typed.client.models.v1_downward_api_projection import V1DownwardAPIProjectionDict
+from kubernetes_typed.client.models.v1_secret_projection import V1SecretProjectionDict
+from kubernetes_typed.client.models.v1_service_account_token_projection import V1ServiceAccountTokenProjectionDict
 
 V1VolumeProjectionDict = TypedDict(
     "V1VolumeProjectionDict",

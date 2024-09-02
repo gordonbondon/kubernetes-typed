@@ -2,7 +2,7 @@
 """V1beta1SELinuxStrategyOptionsDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1SELinuxOptionsDict
+from kubernetes_typed.client.models.v1_se_linux_options import V1SELinuxOptionsDict
 
 V1beta1SELinuxStrategyOptionsDict = TypedDict(
     "V1beta1SELinuxStrategyOptionsDict",

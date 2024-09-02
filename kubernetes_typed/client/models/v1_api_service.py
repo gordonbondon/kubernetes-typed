@@ -2,7 +2,9 @@
 """V1APIServiceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1APIServiceSpecDict, V1APIServiceStatusDict, V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_api_service_spec import V1APIServiceSpecDict
+from kubernetes_typed.client.models.v1_api_service_status import V1APIServiceStatusDict
 
 V1APIServiceDict = TypedDict(
     "V1APIServiceDict",

@@ -2,32 +2,30 @@
 """V1PersistentVolumeSpecDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import (
-    V1AWSElasticBlockStoreVolumeSourceDict,
-    V1AzureDiskVolumeSourceDict,
-    V1AzureFilePersistentVolumeSourceDict,
-    V1CSIPersistentVolumeSourceDict,
-    V1CephFSPersistentVolumeSourceDict,
-    V1CinderPersistentVolumeSourceDict,
-    V1FCVolumeSourceDict,
-    V1FlexPersistentVolumeSourceDict,
-    V1FlockerVolumeSourceDict,
-    V1GCEPersistentDiskVolumeSourceDict,
-    V1GlusterfsPersistentVolumeSourceDict,
-    V1HostPathVolumeSourceDict,
-    V1ISCSIPersistentVolumeSourceDict,
-    V1LocalVolumeSourceDict,
-    V1NFSVolumeSourceDict,
-    V1ObjectReferenceDict,
-    V1PhotonPersistentDiskVolumeSourceDict,
-    V1PortworxVolumeSourceDict,
-    V1QuobyteVolumeSourceDict,
-    V1RBDPersistentVolumeSourceDict,
-    V1ScaleIOPersistentVolumeSourceDict,
-    V1StorageOSPersistentVolumeSourceDict,
-    V1VolumeNodeAffinityDict,
-    V1VsphereVirtualDiskVolumeSourceDict,
-)
+from kubernetes_typed.client.models.v1_aws_elastic_block_store_volume_source import V1AWSElasticBlockStoreVolumeSourceDict
+from kubernetes_typed.client.models.v1_azure_disk_volume_source import V1AzureDiskVolumeSourceDict
+from kubernetes_typed.client.models.v1_azure_file_persistent_volume_source import V1AzureFilePersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_ceph_fs_persistent_volume_source import V1CephFSPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_cinder_persistent_volume_source import V1CinderPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_object_reference import V1ObjectReferenceDict
+from kubernetes_typed.client.models.v1_csi_persistent_volume_source import V1CSIPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_fc_volume_source import V1FCVolumeSourceDict
+from kubernetes_typed.client.models.v1_flex_persistent_volume_source import V1FlexPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_flocker_volume_source import V1FlockerVolumeSourceDict
+from kubernetes_typed.client.models.v1_gce_persistent_disk_volume_source import V1GCEPersistentDiskVolumeSourceDict
+from kubernetes_typed.client.models.v1_glusterfs_persistent_volume_source import V1GlusterfsPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_host_path_volume_source import V1HostPathVolumeSourceDict
+from kubernetes_typed.client.models.v1_iscsi_persistent_volume_source import V1ISCSIPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_local_volume_source import V1LocalVolumeSourceDict
+from kubernetes_typed.client.models.v1_nfs_volume_source import V1NFSVolumeSourceDict
+from kubernetes_typed.client.models.v1_volume_node_affinity import V1VolumeNodeAffinityDict
+from kubernetes_typed.client.models.v1_photon_persistent_disk_volume_source import V1PhotonPersistentDiskVolumeSourceDict
+from kubernetes_typed.client.models.v1_portworx_volume_source import V1PortworxVolumeSourceDict
+from kubernetes_typed.client.models.v1_quobyte_volume_source import V1QuobyteVolumeSourceDict
+from kubernetes_typed.client.models.v1_rbd_persistent_volume_source import V1RBDPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_scale_io_persistent_volume_source import V1ScaleIOPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_storage_os_persistent_volume_source import V1StorageOSPersistentVolumeSourceDict
+from kubernetes_typed.client.models.v1_vsphere_virtual_disk_volume_source import V1VsphereVirtualDiskVolumeSourceDict
 
 V1PersistentVolumeSpecDict = TypedDict(
     "V1PersistentVolumeSpecDict",

@@ -2,7 +2,7 @@
 """V1CephFSPersistentVolumeSourceDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1SecretReferenceDict
+from kubernetes_typed.client.models.v1_secret_reference import V1SecretReferenceDict
 
 V1CephFSPersistentVolumeSourceDict = TypedDict(
     "V1CephFSPersistentVolumeSourceDict",

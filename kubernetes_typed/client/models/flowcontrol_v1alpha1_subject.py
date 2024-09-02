@@ -2,7 +2,9 @@
 """FlowcontrolV1alpha1SubjectDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1alpha1GroupSubjectDict, V1alpha1ServiceAccountSubjectDict, V1alpha1UserSubjectDict
+from kubernetes_typed.client.models.v1alpha1_group_subject import V1alpha1GroupSubjectDict
+from kubernetes_typed.client.models.v1alpha1_service_account_subject import V1alpha1ServiceAccountSubjectDict
+from kubernetes_typed.client.models.v1alpha1_user_subject import V1alpha1UserSubjectDict
 
 FlowcontrolV1alpha1SubjectDict = TypedDict(
     "FlowcontrolV1alpha1SubjectDict",

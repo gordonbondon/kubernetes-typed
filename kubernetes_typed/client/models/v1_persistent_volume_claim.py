@@ -2,7 +2,9 @@
 """V1PersistentVolumeClaimDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1PersistentVolumeClaimSpecDict, V1PersistentVolumeClaimStatusDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_persistent_volume_claim_spec import V1PersistentVolumeClaimSpecDict
+from kubernetes_typed.client.models.v1_persistent_volume_claim_status import V1PersistentVolumeClaimStatusDict
 
 V1PersistentVolumeClaimDict = TypedDict(
     "V1PersistentVolumeClaimDict",

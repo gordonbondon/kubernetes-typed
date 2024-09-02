@@ -3,7 +3,10 @@
 import datetime
 from typing import TypedDict
 
-from kubernetes_typed.client import V1EventSeriesDict, V1EventSourceDict, V1ObjectMetaDict, V1ObjectReferenceDict
+from kubernetes_typed.client.models.v1_object_reference import V1ObjectReferenceDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_event_series import V1EventSeriesDict
+from kubernetes_typed.client.models.v1_event_source import V1EventSourceDict
 
 V1EventDict = TypedDict(
     "V1EventDict",

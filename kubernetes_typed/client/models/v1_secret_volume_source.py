@@ -2,7 +2,7 @@
 """V1SecretVolumeSourceDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1KeyToPathDict
+from kubernetes_typed.client.models.v1_key_to_path import V1KeyToPathDict
 
 V1SecretVolumeSourceDict = TypedDict(
     "V1SecretVolumeSourceDict",

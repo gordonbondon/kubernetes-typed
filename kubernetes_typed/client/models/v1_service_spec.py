@@ -2,7 +2,8 @@
 """V1ServiceSpecDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import V1ServicePortDict, V1SessionAffinityConfigDict
+from kubernetes_typed.client.models.v1_service_port import V1ServicePortDict
+from kubernetes_typed.client.models.v1_session_affinity_config import V1SessionAffinityConfigDict
 
 V1ServiceSpecDict = TypedDict(
     "V1ServiceSpecDict",

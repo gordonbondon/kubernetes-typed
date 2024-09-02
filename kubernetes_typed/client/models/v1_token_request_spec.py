@@ -2,7 +2,7 @@
 """V1TokenRequestSpecDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1BoundObjectReferenceDict
+from kubernetes_typed.client.models.v1_bound_object_reference import V1BoundObjectReferenceDict
 
 V1TokenRequestSpecDict = TypedDict(
     "V1TokenRequestSpecDict",

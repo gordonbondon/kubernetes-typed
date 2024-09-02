@@ -2,17 +2,15 @@
 """V1ContainerDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import (
-    V1ContainerPortDict,
-    V1EnvFromSourceDict,
-    V1EnvVarDict,
-    V1LifecycleDict,
-    V1ProbeDict,
-    V1ResourceRequirementsDict,
-    V1SecurityContextDict,
-    V1VolumeDeviceDict,
-    V1VolumeMountDict,
-)
+from kubernetes_typed.client.models.v1_env_var import V1EnvVarDict
+from kubernetes_typed.client.models.v1_env_from_source import V1EnvFromSourceDict
+from kubernetes_typed.client.models.v1_lifecycle import V1LifecycleDict
+from kubernetes_typed.client.models.v1_probe import V1ProbeDict
+from kubernetes_typed.client.models.v1_container_port import V1ContainerPortDict
+from kubernetes_typed.client.models.v1_resource_requirements import V1ResourceRequirementsDict
+from kubernetes_typed.client.models.v1_security_context import V1SecurityContextDict
+from kubernetes_typed.client.models.v1_volume_device import V1VolumeDeviceDict
+from kubernetes_typed.client.models.v1_volume_mount import V1VolumeMountDict
 
 V1ContainerDict = TypedDict(
     "V1ContainerDict",

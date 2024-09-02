@@ -2,7 +2,8 @@
 """V1LimitRangeDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1LimitRangeSpecDict, V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_limit_range_spec import V1LimitRangeSpecDict
 
 V1LimitRangeDict = TypedDict(
     "V1LimitRangeDict",

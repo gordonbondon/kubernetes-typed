@@ -2,7 +2,9 @@
 """V1HorizontalPodAutoscalerDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1HorizontalPodAutoscalerSpecDict, V1HorizontalPodAutoscalerStatusDict, V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_horizontal_pod_autoscaler_spec import V1HorizontalPodAutoscalerSpecDict
+from kubernetes_typed.client.models.v1_horizontal_pod_autoscaler_status import V1HorizontalPodAutoscalerStatusDict
 
 V1HorizontalPodAutoscalerDict = TypedDict(
     "V1HorizontalPodAutoscalerDict",

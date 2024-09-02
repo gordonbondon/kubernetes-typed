@@ -2,7 +2,7 @@
 """V1beta1CertificateSigningRequestStatusDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import V1beta1CertificateSigningRequestConditionDict
+from kubernetes_typed.client.models.v1beta1_certificate_signing_request_condition import V1beta1CertificateSigningRequestConditionDict
 
 V1beta1CertificateSigningRequestStatusDict = TypedDict(
     "V1beta1CertificateSigningRequestStatusDict",

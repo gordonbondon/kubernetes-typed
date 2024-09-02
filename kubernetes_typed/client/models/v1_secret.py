@@ -2,7 +2,7 @@
 """V1SecretDict generated type."""
 from typing import TypedDict, Dict
 
-from kubernetes_typed.client import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
 
 V1SecretDict = TypedDict(
     "V1SecretDict",

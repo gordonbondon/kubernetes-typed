@@ -2,7 +2,9 @@
 """V1alpha1PolicyRulesWithSubjectsDict generated type."""
 from typing import TypedDict, List
 
-from kubernetes_typed.client import FlowcontrolV1alpha1SubjectDict, V1alpha1NonResourcePolicyRuleDict, V1alpha1ResourcePolicyRuleDict
+from kubernetes_typed.client.models.v1alpha1_non_resource_policy_rule import V1alpha1NonResourcePolicyRuleDict
+from kubernetes_typed.client.models.v1alpha1_resource_policy_rule import V1alpha1ResourcePolicyRuleDict
+from kubernetes_typed.client.models.flowcontrol_v1alpha1_subject import FlowcontrolV1alpha1SubjectDict
 
 V1alpha1PolicyRulesWithSubjectsDict = TypedDict(
     "V1alpha1PolicyRulesWithSubjectsDict",

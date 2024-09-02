@@ -2,19 +2,17 @@
 """V1PodSpecDict generated type."""
 from typing import TypedDict, Dict, List
 
-from kubernetes_typed.client import (
-    V1AffinityDict,
-    V1ContainerDict,
-    V1EphemeralContainerDict,
-    V1HostAliasDict,
-    V1LocalObjectReferenceDict,
-    V1PodDNSConfigDict,
-    V1PodReadinessGateDict,
-    V1PodSecurityContextDict,
-    V1TolerationDict,
-    V1TopologySpreadConstraintDict,
-    V1VolumeDict,
-)
+from kubernetes_typed.client.models.v1_affinity import V1AffinityDict
+from kubernetes_typed.client.models.v1_container import V1ContainerDict
+from kubernetes_typed.client.models.v1_pod_dns_config import V1PodDNSConfigDict
+from kubernetes_typed.client.models.v1_ephemeral_container import V1EphemeralContainerDict
+from kubernetes_typed.client.models.v1_host_alias import V1HostAliasDict
+from kubernetes_typed.client.models.v1_local_object_reference import V1LocalObjectReferenceDict
+from kubernetes_typed.client.models.v1_pod_readiness_gate import V1PodReadinessGateDict
+from kubernetes_typed.client.models.v1_pod_security_context import V1PodSecurityContextDict
+from kubernetes_typed.client.models.v1_toleration import V1TolerationDict
+from kubernetes_typed.client.models.v1_topology_spread_constraint import V1TopologySpreadConstraintDict
+from kubernetes_typed.client.models.v1_volume import V1VolumeDict
 
 V1PodSpecDict = TypedDict(
     "V1PodSpecDict",

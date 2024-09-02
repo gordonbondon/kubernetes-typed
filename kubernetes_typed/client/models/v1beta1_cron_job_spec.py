@@ -2,7 +2,7 @@
 """V1beta1CronJobSpecDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1beta1JobTemplateSpecDict
+from kubernetes_typed.client.models.v1beta1_job_template_spec import V1beta1JobTemplateSpecDict
 
 V1beta1CronJobSpecDict = TypedDict(
     "V1beta1CronJobSpecDict",

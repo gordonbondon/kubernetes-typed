@@ -2,7 +2,7 @@
 """NetworkingV1beta1IngressBackendDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1TypedLocalObjectReferenceDict
+from kubernetes_typed.client.models.v1_typed_local_object_reference import V1TypedLocalObjectReferenceDict
 
 NetworkingV1beta1IngressBackendDict = TypedDict(
     "NetworkingV1beta1IngressBackendDict",

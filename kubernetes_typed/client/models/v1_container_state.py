@@ -2,7 +2,9 @@
 """V1ContainerStateDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ContainerStateRunningDict, V1ContainerStateTerminatedDict, V1ContainerStateWaitingDict
+from kubernetes_typed.client.models.v1_container_state_running import V1ContainerStateRunningDict
+from kubernetes_typed.client.models.v1_container_state_terminated import V1ContainerStateTerminatedDict
+from kubernetes_typed.client.models.v1_container_state_waiting import V1ContainerStateWaitingDict
 
 V1ContainerStateDict = TypedDict(
     "V1ContainerStateDict",

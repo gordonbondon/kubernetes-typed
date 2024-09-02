@@ -2,7 +2,8 @@
 """V1beta1SelfSubjectAccessReviewSpecDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1beta1NonResourceAttributesDict, V1beta1ResourceAttributesDict
+from kubernetes_typed.client.models.v1beta1_non_resource_attributes import V1beta1NonResourceAttributesDict
+from kubernetes_typed.client.models.v1beta1_resource_attributes import V1beta1ResourceAttributesDict
 
 V1beta1SelfSubjectAccessReviewSpecDict = TypedDict(
     "V1beta1SelfSubjectAccessReviewSpecDict",

@@ -2,7 +2,7 @@
 """V1alpha1WebhookClientConfigDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1alpha1ServiceReferenceDict
+from kubernetes_typed.client.models.v1alpha1_service_reference import V1alpha1ServiceReferenceDict
 
 V1alpha1WebhookClientConfigDict = TypedDict(
     "V1alpha1WebhookClientConfigDict",

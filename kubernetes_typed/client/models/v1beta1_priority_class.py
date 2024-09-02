@@ -2,7 +2,7 @@
 """V1beta1PriorityClassDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
 
 V1beta1PriorityClassDict = TypedDict(
     "V1beta1PriorityClassDict",

@@ -2,7 +2,10 @@
 """V1EnvVarSourceDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ConfigMapKeySelectorDict, V1ObjectFieldSelectorDict, V1ResourceFieldSelectorDict, V1SecretKeySelectorDict
+from kubernetes_typed.client.models.v1_config_map_key_selector import V1ConfigMapKeySelectorDict
+from kubernetes_typed.client.models.v1_object_field_selector import V1ObjectFieldSelectorDict
+from kubernetes_typed.client.models.v1_resource_field_selector import V1ResourceFieldSelectorDict
+from kubernetes_typed.client.models.v1_secret_key_selector import V1SecretKeySelectorDict
 
 V1EnvVarSourceDict = TypedDict(
     "V1EnvVarSourceDict",

@@ -2,7 +2,7 @@
 """V1alpha1VolumeAttachmentSpecDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1alpha1VolumeAttachmentSourceDict
+from kubernetes_typed.client.models.v1alpha1_volume_attachment_source import V1alpha1VolumeAttachmentSourceDict
 
 V1alpha1VolumeAttachmentSpecDict = TypedDict(
     "V1alpha1VolumeAttachmentSpecDict",

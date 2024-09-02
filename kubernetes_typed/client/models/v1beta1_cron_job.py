@@ -2,7 +2,9 @@
 """V1beta1CronJobDict generated type."""
 from typing import TypedDict
 
-from kubernetes_typed.client import V1ObjectMetaDict, V1beta1CronJobSpecDict, V1beta1CronJobStatusDict
+from kubernetes_typed.client.models.v1_object_meta import V1ObjectMetaDict
+from kubernetes_typed.client.models.v1beta1_cron_job_spec import V1beta1CronJobSpecDict
+from kubernetes_typed.client.models.v1beta1_cron_job_status import V1beta1CronJobStatusDict
 
 V1beta1CronJobDict = TypedDict(
     "V1beta1CronJobDict",

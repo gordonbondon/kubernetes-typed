@@ -41,3 +41,12 @@ Do this:
 ```
 python ./scripts/typeddictgen.py
 ```
+
+## Publishing
+
+Add and push a new tag:
+
+```
+git tag v18.20.2rc1
+git push origin --tags
+```

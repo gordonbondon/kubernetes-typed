@@ -7,7 +7,9 @@
 from typing import TypedDict{% if model.typing_import %}{{ ", " }}{{ model.typing_import | join(", ") }}{% endif %}{{ "\n" -}}
 {% if model.model_import -%}
 {{ "\n" -}}
-{{ "from kubernetes_typed.client import " }}{{ model.model_import | join(", ") }}{{ "\n" }}
+{% for module, imports in model.model_import.items() -%}
+{{ "from {0} import ".format(module) }}{{ imports | join(", ") }}{{ "\n" -}}
+{% endfor -%}
 {% endif -%}
 
 {# Using pep 589 alternative syntax to allow reserved keywords as keys -#}

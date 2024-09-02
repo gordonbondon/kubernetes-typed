@@ -1,3 +1,8 @@
+# 18.20.2
+
+### Bug fix
+- Fix circular import in TypedDict definitions ([#26](https://github.com/gordonbondon/kubernetes-typed/pull/26))
+
 # 18.20.1
 
 ### Bug fix

@@ -2,6 +2,7 @@
 
 # kubernetes-typed
 
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 [![Build status](https://github.com/gordonbondon/kubernetes-typed/actions/workflows/pull_request.yml/badge.svg?branch=master)](https://github.com/gordonbondon/kubernetes-typed/actions?query=workflow%3ATest+branch%3Amaster)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
